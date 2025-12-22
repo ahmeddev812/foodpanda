@@ -5,14 +5,328 @@
 <title>Foodpanda</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-<header class="navbar">
-<h1>Foodpanda</h1>
-<nav>
-<a href="pages/login.html">Login</a>
-<a href="pages/restaurants.html">Restaurants</a>
-</nav>
+
+
 </header>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodpanda - Food & Grocery Delivery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <h1><i class="fas fa-paw"></i> Foodpanda</h1>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+                    <a href="pages/restaurants.html" class="nav-link"><i class="fas fa-utensils"></i> Restaurants</a>
+                    <a href="pages/pandamart.html" class="nav-link"><i class="fas fa-store"></i> PandaMart</a>
+                    <a href="pages/pandapro.html" class="nav-link"><i class="fas fa-crown"></i> PandaPro</a>
+                    <a href="pages/panda-ads.html" class="nav-link"><i class="fas fa-bullhorn"></i> PandaAds</a>
+                </nav>
+                
+                <!-- Right side actions -->
+                <div class="nav-actions">
+                    <div class="location-selector">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="current-location">Select location</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <a href="pages/login.html" class="btn-login"><i class="fas fa-user"></i> Log in</a>
+                    <a href="pages/signup.html" class="btn-signup">Sign up</a>
+                    <div class="cart-icon">
+                        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                        <span class="cart-count">0</span>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu toggle -->
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation (hidden by default) -->
+            <div class="mobile-nav">
+                <a href="index.html" class="mobile-nav-link active"><i class="fas fa-home"></i> Home</a>
+                <a href="pages/restaurants.html" class="mobile-nav-link"><i class="fas fa-utensils"></i> Restaurants</a>
+                <a href="pages/pandamart.html" class="mobile-nav-link"><i class="fas fa-store"></i> PandaMart</a>
+                <a href="pages/pandapro.html" class="mobile-nav-link"><i class="fas fa-crown"></i> PandaPro</a>
+                <a href="pages/panda-ads.html" class="mobile-nav-link"><i class="fas fa-bullhorn"></i> PandaAds</a>
+                <a href="pages/login.html" class="mobile-nav-link"><i class="fas fa-user"></i> Log in</a>
+                <a href="pages/signup.html" class="mobile-nav-link"><i class="fas fa-user-plus"></i> Sign up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Craving something delicious?</h1>
+                <p class="hero-subtitle">Get your favorite food delivered in 30 minutes or less</p>
+                
+                <!-- Location Search Bar -->
+                <div class="location-search">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-map-marker-alt search-icon"></i>
+                        <input type="text" id="location-input" placeholder="Enter your delivery address">
+                        <button class="btn-find-food">Find Food</button>
+                    </div>
+                    <div class="location-suggestions">
+                        <p class="suggestion-title">Popular cities</p>
+                        <div class="suggestion-tags">
+                            <span class="tag">Manila</span>
+                            <span class="tag">Cebu City</span>
+                            <span class="tag">Quezon City</span>
+                            <span class="tag">Davao City</span>
+                            <span class="tag">Makati</span>
+                            <span class="tag">Baguio</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Banner -->
+    <section class="promo-banner">
+        <div class="container">
+            <div class="promo-content">
+                <div class="promo-text">
+                    <h2>Get 50% off on your first order!</h2>
+                    <p>Use code: WELCOME50 at checkout</p>
+                </div>
+                <button class="btn-promo">Order Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Restaurants Section -->
+    <section class="section popular-restaurants">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Popular Restaurants Near You</h2>
+                <a href="pages/restaurants.html" class="see-all">See all <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="restaurants-grid" id="restaurants-grid">
+                <!-- Restaurant cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cuisine Categories -->
+    <section class="section cuisine-categories">
+        <div class="container">
+            <h2 class="section-title">Cuisine Categories</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon pizza">
+                        <i class="fas fa-pizza-slice"></i>
+                    </div>
+                    <h3>Pizza</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon burger">
+                        <i class="fas fa-hamburger"></i>
+                    </div>
+                    <h3>Burgers</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon sushi">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <h3>Sushi</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon asian">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Asian</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon dessert">
+                        <i class="fas fa-ice-cream"></i>
+                    </div>
+                    <h3>Desserts</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon healthy">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3>Healthy</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Download Section -->
+    <section class="app-download">
+        <div class="container">
+            <div class="app-content">
+                <div class="app-text">
+                    <h2>Get the Foodpanda App</h2>
+                    <p>Order food anytime, anywhere with the Foodpanda app</p>
+                    <div class="app-badges">
+                        <a href="#" class="app-badge">
+                            <i class="fab fa-google-play"></i>
+                            <div>
+                                <span>GET IT ON</span>
+                                <strong>Google Play</strong>
+                            </div>
+                        </a>
+                        <a href="#" class="app-badge">
+                            <i class="fab fa-apple"></i>
+                            <div>
+                                <span>Download on the</span>
+                                <strong>App Store</strong>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="app-image">
+                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Foodpanda App">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-paw"></i> Foodpanda</h3>
+                    <p>Delivering good food to your doorstep</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Partner with us</h4>
+                    <ul>
+                        <li><a href="pages/panda-ads.html">Panda Ads</a></li>
+                        <li><a href="#">Restaurant Partners</a></li>
+                        <li><a href="#">Rider Partners</a></li>
+                        <li><a href="#">Corporate Orders</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Foodpanda Clone. Made for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Location Modal -->
+    <div class="location-modal" id="locationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Select your location</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" placeholder="Search for your area" class="modal-search">
+                <div class="location-list">
+                    <div class="location-item active">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Use current location</h4>
+                            <p>Detecting your location...</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <i class="fas fa-city"></i>
+                        <div>
+                            <h4>Manila</h4>
+                            <p>Metro Manila, Philippines</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <i class="fas fa-city"></i>
+                        <div>
+                            <h4>Cebu City</h4>
+                            <p>Cebu, Philippines</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <i class="fas fa-city"></i>
+                        <div>
+                            <h4>Quezon City</h4>
+                            <p>Metro Manila, Philippines</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Cart -->
+    <div class="floating-cart">
+        <div class="cart-header">
+            <h4>Your Cart</h4>
+            <span class="close-cart">&times;</span>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be populated by JavaScript -->
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-amount">₱0.00</span>
+            </div>
+            <button class="btn-checkout">Checkout</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>
 <script src="js/script.js"></script>
 </body>
 </html>
