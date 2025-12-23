@@ -1,49 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foodpanda - Food and Groceries Delivered</title>
-    
+
     <!-- CSS Files -->
     <link rel="stylesheet" href="./css/style.css">
-    
+
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Header / Navigation -->
-   <!-- Header / Navigation -->
-<header class="header">
-    <div class="container">
-        <div class="header-content">
-            <!-- Logo -->
-            <div class="logo">
-                <a href="index.html" class="logo-link">
-                    <img src="./Assets/foodpanda_logo_2023.jpg" 
-                         alt="Foodpanda Logo" 
-                         class="logo-img">
-                </a>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <img src="./Assets/foodpanda_logo_2023.jpg" alt="Foodpanda Logo" class="logo-img">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="main-nav" id="mainNav">
+                    <ul class="nav-list">
+                        <li class="nav-item active"><a href="./index.html">Home</a></li>
+                        <li class="nav-item"><a href="./About.html">About</a></li>
+                        <li class="nav-item"><a href="newsroom.html">Newsroom</a></li>
+                        <li class="nav-item"><a href="partners.html">Partners</a></li>
+                        <li class="nav-item"><a href="panda-ads.html">Panda Ads</a></li>
+                        <li class="nav-item"><a href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a href="careers.html">Careers</a></li>
+
+                        <!-- Location Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="dropdown-toggle">Choose location </i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Bangladesh</a></li>
+                                <li><a href="#">Cambodia</a></li>
+                                <li><a href="#">Hong Kong</a></li>
+                                <li><a href="#">Malaysia</a></li>
+                                <li><a href="#">Philippines</a></li>
+                                <li><a href="#">Singapore</a></li>
+                                <li><a href="#">Thailand</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Search and Mobile Menu - Moved to the right -->
+                <div class="header-right">
+                    <!-- Search Button -->
+                    <button class="search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+
+                <!-- Search Form -->
+                <div class="search-overlay" id="searchOverlay">
+                    <div class="search-container">
+                        <form class="search-form" id="searchForm">
+                            <input type="text" placeholder="Search food, restaurants, or cuisines..."
+                                class="search-input" id="searchInput">
+                            <button type="submit" class="search-submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                        <button class="search-close" id="searchClose">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Desktop Navigation -->
-            <nav class="main-nav" id="mainNav">
-                <ul class="nav-list">
-                    <li class="nav-item active"><a href="index.html">Home</a></li>
-                    <li class="nav-item"><a href="about.html">About</a></li>
-                    <li class="nav-item"><a href="newsroom.html">Newsroom</a></li>
-                    <li class="nav-item"><a href="partners.html">Partners</a></li>
-                    <li class="nav-item"><a href="panda-ads.html">Panda Ads</a></li>
-                    <li class="nav-item"><a href="contact.html">Contact</a></li>
-                    <li class="nav-item"><a href="careers.html">Careers</a></li>
-                    
-                    <!-- Location Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a href="#" class="dropdown-toggle">Choose location </i></a>
-                        <ul class="dropdown-menu">
+            <!-- Mobile Navigation -->
+            <nav class="mobile-nav" id="mobileNav">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item active"><a href="./index.html">Home</a></li>
+                    <li class="mobile-nav-item"><a href="./About.html">About</a></li>
+                    <li class="mobile-nav-item"><a href="newsroom.html">Newsroom</a></li>
+                    <li class="mobile-nav-item"><a href="partners.html">Partners</a></li>
+                    <li class="mobile-nav-item"><a href="panda-ads.html">Panda Ads</a></li>
+                    <li class="mobile-nav-item"><a href="contact.html">Contact</a></li>
+                    <li class="mobile-nav-item"><a href="careers.html">Careers</a></li>
+
+                    <!-- Mobile Location Dropdown -->
+                    <li class="mobile-nav-item dropdown">
+                        <a href="#" class="mobile-dropdown-toggle">Choose location <i
+                                class="fas fa-chevron-down"></i></a>
+                        <ul class="mobile-dropdown-menu">
                             <li><a href="#">Bangladesh</a></li>
                             <li><a href="#">Cambodia</a></li>
                             <li><a href="#">Hong Kong</a></li>
@@ -55,69 +117,8 @@
                     </li>
                 </ul>
             </nav>
-
-            <!-- Search and Mobile Menu - Moved to the right -->
-            <div class="header-right">
-                <!-- Search Button -->
-                <button class="search-btn" id="searchBtn">
-                    <i class="fas fa-search"></i>
-                </button>
-                
-                <!-- Mobile Menu Toggle -->
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-            
-            <!-- Search Form -->
-            <div class="search-overlay" id="searchOverlay">
-                <div class="search-container">
-                    <form class="search-form" id="searchForm">
-                        <input type="text" 
-                               placeholder="Search food, restaurants, or cuisines..." 
-                               class="search-input"
-                               id="searchInput">
-                        <button type="submit" class="search-submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                    <button class="search-close" id="searchClose">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
         </div>
-        
-        <!-- Mobile Navigation -->
-        <nav class="mobile-nav" id="mobileNav">
-            <ul class="mobile-nav-list">
-                <li class="mobile-nav-item active"><a href="index.html">Home</a></li>
-                <li class="mobile-nav-item"><a href="about.html">About</a></li>
-                <li class="mobile-nav-item"><a href="newsroom.html">Newsroom</a></li>
-                <li class="mobile-nav-item"><a href="partners.html">Partners</a></li>
-                <li class="mobile-nav-item"><a href="panda-ads.html">Panda Ads</a></li>
-                <li class="mobile-nav-item"><a href="contact.html">Contact</a></li>
-                <li class="mobile-nav-item"><a href="careers.html">Careers</a></li>
-                
-                <!-- Mobile Location Dropdown -->
-                <li class="mobile-nav-item dropdown">
-                    <a href="#" class="mobile-dropdown-toggle">Choose location <i class="fas fa-chevron-down"></i></a>
-                    <ul class="mobile-dropdown-menu">
-                        <li><a href="#">Bangladesh</a></li>
-                        <li><a href="#">Cambodia</a></li>
-                        <li><a href="#">Hong Kong</a></li>
-                        <li><a href="#">Malaysia</a></li>
-                        <li><a href="#">Philippines</a></li>
-                        <li><a href="#">Singapore</a></li>
-                        <li><a href="#">Thailand</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</header>
+    </header>
 
     <!-- Hero Section with Video -->
     <section class="hero">
@@ -128,10 +129,10 @@
                 <!-- Fallback image if video doesn't load -->
                 <img src="./Assets/fp-home-video-poster.webp" alt="Foodpanda delivery">
             </video>
-            
+
             <!-- Dark overlay for better text readability -->
             <div class="video-overlay"></div>
-            
+
             <!-- Hero Content -->
             <div class="hero-content">
                 <div class="container">
@@ -146,17 +147,23 @@
     </section>
 
     <!-- Introduction Section -->
-    <section class="introduction">
+    <!-- We're Here to Help Section with Two Columns -->
+    <section class="help-section">
         <div class="container">
-            <div class="intro-content">
-                <div class="intro-text">
-                    <h2 class="section-title">
+            <div class="help-columns">
+                <!-- Left Column (66.66%) -->
+                <div class="help-column help-column-left">
+                    <h2 class="help-title">
                         We're here to help you live life the panda way.
-                    </h2>
-                    <p class="section-subtitle">
-                        Spend more time doing what you love – we'll take care of tasty meals, 
+                        Spend more time doing what you love – we'll take care of tasty meals,
                         fresh groceries and new flavours.
-                    </p>
+
+                    </h2>
+                </div>
+
+                <!-- Right Column (33.33%) - Empty but maintains layout -->
+                <div class="help-column help-column-right">
+                    <!-- This column can be empty or used for decorative elements -->
                 </div>
             </div>
         </div>
@@ -168,69 +175,63 @@
             <!-- Feature 1 -->
             <div class="feature-item">
                 <div class="feature-image">
-                    <img src="https://www.foodpanda.com/wp-content/uploads/2025/07/fp-home.webp" 
-                         alt="Food delivery service" 
-                         class="feature-img">
+                    <img src="./Assets/fp-home.webp" alt="Food delivery service" class="feature-img">
                 </div>
                 <div class="feature-content">
                     <h2 class="feature-title">Meet the next generation of delivery!</h2>
                     <p class="feature-description">
-                        What makes quick commerce quick? We stand for swift personalised 
-                        delivery solutions for our customers, partners and employees. 
-                        Learn how we empower authentic lifestyles and drive innovation 
+                        What makes quick commerce quick? We stand for swift personalised
+                        delivery solutions for our customers, partners and employees.
+                        Learn how we empower authentic lifestyles and drive innovation
                         across the globe.
                     </p>
                     <a href="about.html" class="btn btn-primary">About</a>
                 </div>
             </div>
 
-            <!-- Feature 2 -->
-            <div class="feature-item feature-reverse">
+
+            <!-- Feature 2 - Image on RIGHT, Content on LEFT -->
+            <div class="feature-item">
+                <!-- Content FIRST (will appear on LEFT) -->
                 <div class="feature-content">
                     <h2 class="feature-title">Taste the convenience.</h2>
                     <p class="feature-description">
-                        Try us out! Delicious food and speedy groceries are at your fingertips. 
+                        Try us out! Delicious food and speedy groceries are at your fingertips.
                         Go ahead, download foodpanda now.
                     </p>
-                    
-                    <!-- App Download Buttons -->
+
+                    <!-- App Download Images (replace your app-downloads div with this) -->
                     <div class="app-downloads">
-                        <a href="#" class="app-btn">
-                            <i class="fab fa-apple"></i>
-                            <div class="app-btn-text">
-                                <span>Download on the</span>
-                                <strong>App Store</strong>
-                            </div>
+                        <a href="https://apps.apple.com/app/foodpanda-food-delivery/id758103884?l=en" target="_blank"
+                            rel="noreferrer noopener">
+                            <img loading="lazy" decoding="async" width="132" height="44" src="./Assets/app-apple.png"
+                                alt="Download on App Store">
                         </a>
-                        <a href="#" class="app-btn">
-                            <i class="fab fa-google-play"></i>
-                            <div class="app-btn-text">
-                                <span>GET IT ON</span>
-                                <strong>Google Play</strong>
-                            </div>
+
+                        <a href="https://play.google.com/store/apps/details?id=com.global.foodpanda.android"
+                            target="_blank" rel="noreferrer noopener">
+                            <img loading="lazy" decoding="async" width="148" height="44" src="./Assets/app-google.png"
+                                alt="Get it on Google Play">
                         </a>
-                        <a href="#" class="app-btn">
-                            <i class="fas fa-store"></i>
-                            <div class="app-btn-text">
-                                <span>Explore on</span>
-                                <strong>AppGallery</strong>
-                            </div>
+
+                        <a href="https://appgallery.huawei.com/app/C101812091" target="_blank"
+                            rel="noreferrer noopener">
+                            <img loading="lazy" decoding="async" width="148" height="44" src="./Assets/app-huawei.png"
+                                alt="Explore on AppGallery">
                         </a>
                     </div>
                 </div>
+
+                <!-- Image SECOND (will appear on RIGHT) -->
                 <div class="feature-image">
-                    <img src="https://www.foodpanda.com/wp-content/uploads/2025/07/foodpanda-home-2.webp" 
-                         alt="Foodpanda app interface" 
-                         class="feature-img">
+                    <img src="./Assets/foodpanda-home-2.webp" alt="Foodpanda app interface" class="feature-img">
                 </div>
             </div>
 
             <!-- Feature 3 -->
             <div class="feature-item">
                 <div class="feature-image">
-                    <img src="https://www.foodpanda.com/wp-content/uploads/2025/07/fp-home-3.webp" 
-                         alt="Career opportunities at Foodpanda" 
-                         class="feature-img">
+                    <img src="./Assets/fp-home-3.webp" alt="Career opportunities at Foodpanda" class="feature-img">
                 </div>
                 <div class="feature-content">
                     <h2 class="feature-title">Find the job you'd love</h2>
@@ -238,7 +239,7 @@
                         Hungry to make a difference? There's a seat at our table!
                     </p>
                     <p class="feature-description">
-                        Find out how we connect tech, passions, projects and people – 
+                        Find out how we connect tech, passions, projects and people –
                         explore international career opportunities at foodpanda.
                     </p>
                     <a href="careers.html" class="btn btn-primary">Join us!</a>
@@ -250,19 +251,18 @@
                 <div class="feature-content">
                     <h2 class="feature-title">Feed your team.</h2>
                     <p class="feature-description">
-                        Treat your talented team to their favourite meals. Let them pick! 
+                        Treat your talented team to their favourite meals. Let them pick!
                         Explore flexible corporate food delivery options and tasty employee perks.
                     </p>
                     <a href="corporate.html" class="btn btn-primary">Explore</a>
                 </div>
                 <div class="feature-image">
-                    <img src="https://www.foodpanda.com/wp-content/uploads/2025/07/foodpanda-home-4.webp" 
-                         alt="Corporate food delivery" 
-                         class="feature-img">
+                    <img src="./Assets/foodpanda-home-4.webp" alt="Corporate food delivery" class="feature-img">
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Newsroom Section -->
     <section class="newsroom">
@@ -270,39 +270,115 @@
             <div class="section-header">
                 <h2 class="section-title">Have you heard?</h2>
                 <p class="section-subtitle">
-                    The industry is changing fast! Stay up to date with foodpanda press. 
+                    The industry is changing fast! Stay up to date with foodpanda press.
                     Catch up on the latest news, updates and reports here.
                 </p>
             </div>
 
-            <!-- News Items (Static for now) -->
-            <div class="news-grid">
-                <div class="news-item">
-                    <div class="news-image" style="background-image: url('https://www.foodpanda.com/wp-content/uploads/2025/12/EDW_0166-1.jpg')"></div>
-                    <div class="news-content">
-                        <span class="news-category">Merchants</span>
-                        <h3 class="news-title">foodpanda strengthens merchant care with record onboarding milestone in Asia</h3>
-                        <span class="news-date">17.12.2025</span>
+            <!-- News Slider Container -->
+            <div class="news-slider-container">
+                <div class="news-slider-wrapper">
+                    <!-- News Item 1 -->
+                    <div class="news-slide">
+                        <div class="news-slide-image" style="background-image: url('./Assets/EDW_0166-1.jpg')"></div>
+                        <div class="news-slide-content">
+                            <span class="news-slide-category">Merchants</span>
+                            <h3 class="news-slide-title">foodpanda strengthens merchant care with record onboarding
+                                milestone in Asia</h3>
+                            <span class="news-slide-date">17.12.2025</span>
+                        </div>
+                    </div>
+
+                    <!-- News Item 2 -->
+                    <div class="news-slide">
+                        <div class="news-slide-image" style="background-image: url('./Assets/Key-KV.jpg')"></div>
+                        <div class="news-slide-content">
+                            <span class="news-slide-category">Press Releases</span>
+                            <h3 class="news-slide-title">foodpanda expands 'panda hearts' programme, reports 30% drop in
+                                rider accidents across Asia</h3>
+                            <span class="news-slide-date">25.11.2025</span>
+                        </div>
+                    </div>
+
+                    <!-- News Item 3 -->
+                    <div class="news-slide">
+                        <div class="news-slide-image"
+                            style="background-image: url('./Assets/Ride_Hailing_Release___Key_Visual-v2.jpg')"></div>
+                        <div class="news-slide-content">
+                            <span class="news-slide-category">Business</span>
+                            <h3 class="news-slide-title">foodpanda brings unmatched value to pandapro members with
+                                one-of-a-kind ride-hailing partnerships across Asia</h3>
+                            <span class="news-slide-date">21.11.2025</span>
+                        </div>
+                    </div>
+
+                    <!-- News Item 4 -->
+                    <div class="news-slide">
+                        <div class="news-slide-image"
+                            style="background-image: url('./Assets/Image-1-scaled-e1745809628641.jpg')"></div>
+                        <div class="news-slide-content">
+                            <span class="news-slide-category">Press Releases</span>
+                            <h3 class="news-slide-title">foodpanda Singapore strengthens support for delivery partners
+                                through signed MOU with NDCA</h3>
+                            <span class="news-slide-date">25.04.2025</span>
+                        </div>
+                    </div>
+                    <!-- News Item 5 -->
+                    <div class="news-slide">
+                        <div class="news-slide-image" style="background-image: url('./Assets/fp-home-video-poster.webp')">
+                        </div>
+                        <div class="news-slide-content">
+                            <span class="news-slide-category">Press Releases</span>
+                            <h3 class="news-slide-title">foodpanda announces strategic expansion into five new cities
+                                across Southeast Asia</h3>
+                            <span class="news-slide-date">15.01.2025</span>
+                        </div>
+                    </div>
+
+                    <!-- News Item 6 -->
+                    <div class="news-slide">
+                        <div class="news-slide-image"
+                            style="background-image: url('./Assets/fp-singapore.webp')"></div>
+                        <div class="news-slide-content">
+                            <span class="news-slide-category">Sustainability</span>
+                            <h3 class="news-slide-title">foodpanda releases 2024 sustainability report highlighting
+                                green delivery initiatives</h3>
+                            <span class="news-slide-date">30.11.2024</span>
+                        </div>
+                    </div>
+
+                    <!-- News Item 7 -->
+                    <div class="news-slide">
+                        <div class="news-slide-image" style="background-image: url('./Assets/Key-KV.jpg')">
+                        </div>
+                        <div class="news-slide-content">
+                            <span class="news-slide-category">Technology</span>
+                            <h3 class="news-slide-title">foodpanda introduces AI-powered recommendation engine for
+                                personalized food discovery</h3>
+                            <span class="news-slide-date">18.10.2024</span>
+                        </div>
+                    </div>
+
+                    <!-- News Item 8 -->
+                    <div class="news-slide">
+                        <div class="news-slide-image" style="background-image: url('./Assets/website_banner_1440x480px.webp')"></div>
+                        <div class="news-slide-content">
+                            <span class="news-slide-category">Partnerships</span>
+                            <h3 class="news-slide-title">foodpanda partners with 500+ local farms for fresh grocery
+                                delivery initiative</h3>
+                            <span class="news-slide-date">05.09.2024</span>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="news-item">
-                    <div class="news-image" style="background-image: url('https://www.foodpanda.com/wp-content/uploads/2025/11/Key-KV.jpg')"></div>
-                    <div class="news-content">
-                        <span class="news-category">Press Releases</span>
-                        <h3 class="news-title">foodpanda expands 'panda hearts' programme, reports 30% drop in rider accidents across Asia</h3>
-                        <span class="news-date">25.11.2025</span>
-                    </div>
-                </div>
-                
-                <div class="news-item">
-                    <div class="news-image" style="background-image: url('https://www.foodpanda.com/wp-content/uploads/2025/12/Ride_Hailing_Release___Key_Visual-v2.jpg')"></div>
-                    <div class="news-content">
-                        <span class="news-category">Business</span>
-                        <h3 class="news-title">foodpanda brings unmatched value to pandapro members with one-of-a-kind ride-hailing partnerships across Asia</h3>
-                        <span class="news-date">21.11.2025</span>
-                    </div>
-                </div>
+
+
+                <!-- Navigation Arrows -->
+                <button class="slider-nav slider-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-nav slider-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -312,9 +388,8 @@
         <div class="container">
             <!-- Footer Logo -->
             <div class="footer-logo">
-                <img src="https://www.foodpanda.com/wp-content/uploads/2023/06/foodpanda_logo_2023.svg" 
-                     alt="Foodpanda Logo" 
-                     class="footer-logo-img">
+                <img src="./Assets/foodpanda_logo_2023-removebg-preview.png" alt="Foodpanda Logo"
+                    class="footer-logo-img">
             </div>
 
             <!-- Footer Navigation -->
@@ -372,6 +447,7 @@
     </button>
 
     <!-- JavaScript Files -->
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
+
 </html>
