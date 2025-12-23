@@ -593,3 +593,545 @@ if (!('scrollBehavior' in document.documentElement.style)) {
     // Load polyfill or implement fallback
     console.warn('Smooth scroll not supported in this browser');
 }
+// ============================================
+// PANDA ADS PAGE SPECIFIC FUNCTIONALITY
+// ============================================
+
+// Initialize on DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ============================================
+    // ANIMATE STATS COUNTER
+    // ============================================
+    
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    function animateStats() {
+        statNumbers.forEach(stat => {
+            const targetNumber = parseInt(stat.textContent.replace(/[^0-9]/g, ''));
+            const prefix = stat.textContent.replace(/[0-9]/g, '').trim();
+            const suffix = stat.textContent.replace(/[^0-9\+]/g, '').replace(/[0-9]/g, '');
+            
+            // Reset for animation
+            stat.textContent = '0';
+            
+            // Animate counter
+            let current = 0;
+            const increment = targetNumber / 50; // Adjust speed
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= targetNumber) {
+                    current = targetNumber;
+                    clearInterval(timer);
+                }
+                stat.textContent = prefix + Math.floor(current) + suffix;
+            }, 50);
+        });
+    }
+    
+    // Trigger animation when stats section is in view
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(statsSection);
+    }
+    
+    // ============================================
+    // CASE STUDY HOVER EFFECTS
+    // ============================================
+    
+    const caseStudyCards = document.querySelectorAll('.case-study-card');
+    caseStudyCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+    
+    // ============================================
+    // TESTIMONIAL CAROUSEL (Optional)
+    // ============================================
+    
+    function initializeTestimonialCarousel() {
+        const testimonialGrid = document.querySelector('.testimonials-grid');
+        if (!testimonialGrid) return;
+        
+        // Only enable on mobile
+        if (window.innerWidth <= 767) {
+            testimonialGrid.classList.add('testimonial-carousel');
+            
+            // Add navigation dots
+            const testimonials = document.querySelectorAll('.testimonial-card');
+            const dotsContainer = document.createElement('div');
+            dotsContainer.className = 'carousel-dots';
+            
+            testimonials.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot';
+                dot.setAttribute('data-index', index);
+                dot.textContent = '○';
+                
+                dot.addEventListener('click', function() {
+                    goToSlide(index);
+                });
+                
+                dotsContainer.appendChild(dot);
+            });
+            
+            testimonialGrid.parentNode.appendChild(dotsContainer);
+            
+            // Add next/prev buttons
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'carousel-prev';
+            prevBtn.innerHTML = '‹';
+            
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'carousel-next';
+            nextBtn.innerHTML = '›';
+            
+            testimonialGrid.parentNode.appendChild(prevBtn);
+            testimonialGrid.parentNode.appendChild(nextBtn);
+            
+            let currentSlide = 0;
+            
+            function goToSlide(index) {
+                currentSlide = index;
+                const translateX = -currentSlide * 100;
+                testimonialGrid.style.transform = `translateX(${translateX}%)`;
+                
+                // Update active dot
+                document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+                    dot.textContent = i === index ? '●' : '○';
+                });
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    goToSlide(currentSlide - 1);
+                }
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < testimonials.length - 1) {
+                    goToSlide(currentSlide + 1);
+                }
+            });
+            
+            // Add CSS for carousel
+            const style = document.createElement('style');
+            style.textContent = `
+                .testimonial-carousel {
+                    display: flex;
+                    overflow: hidden;
+                    transition: transform 0.5s ease;
+                }
+                
+                .testimonial-carousel .testimonial-card {
+                    flex: 0 0 100%;
+                    min-width: 100%;
+                }
+                
+                .carousel-dots {
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    margin-top: 20px;
+                }
+                
+                .carousel-dot {
+                    background: none;
+                    border: none;
+                    font-size: 24px;
+                    color: #ccc;
+                    cursor: pointer;
+                    padding: 0;
+                    transition: color 0.3s ease;
+                }
+                
+                .carousel-dot:hover {
+                    color: var(--primary-color);
+                }
+                
+                .carousel-prev,
+                .carousel-next {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: var(--primary-color);
+                    color: white;
+                    border: none;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    font-size: 24px;
+                    cursor: pointer;
+                    z-index: 10;
+                }
+                
+                .carousel-prev {
+                    left: 10px;
+                }
+                
+                .carousel-next {
+                    right: 10px;
+                }
+                
+                .testimonials {
+                    position: relative;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+    
+    // Initialize on load and resize
+    window.addEventListener('load', initializeTestimonialCarousel);
+    window.addEventListener('resize', initializeTestimonialCarousel);
+    
+    // ============================================
+    // BRANDS LOGO ANIMATION
+    // ============================================
+    
+    const brandLogos = document.querySelectorAll('.brand-logo');
+    brandLogos.forEach(logo => {
+        logo.addEventListener('mouseenter', function() {
+            const img = this.querySelector('img');
+            if (img) {
+                img.style.transform = 'scale(1.1)';
+            }
+        });
+        
+        logo.addEventListener('mouseleave', function() {
+            const img = this.querySelector('img');
+            if (img) {
+                img.style.transform = 'scale(1)';
+            }
+        });
+    });
+    
+    // ============================================
+    // SOLUTIONS SECTION INTERACTIVE EFFECTS
+    // ============================================
+    
+    const solutionItems = document.querySelectorAll('.solution-item');
+    solutionItems.forEach(item => {
+        const image = item.querySelector('.solution-image img');
+        const content = item.querySelector('.solution-content');
+        
+        if (image && content) {
+            item.addEventListener('mouseenter', function() {
+                image.style.transform = 'scale(1.05)';
+                content.style.transform = 'translateY(-5px)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                image.style.transform = 'scale(1)';
+                content.style.transform = 'translateY(0)';
+            });
+        }
+    });
+    
+    // ============================================
+    // SMOOTH SCROLL TO CTA SECTION
+    // ============================================
+    
+    const ctaButtons = document.querySelectorAll('a[href="#contact"]');
+    ctaButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // ============================================
+    // FORM SUBMISSION FOR CONTACT
+    // ============================================
+    
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            let isValid = true;
+            const requiredFields = this.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('error');
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+            
+            if (isValid) {
+                // Show loading state
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    // Success message
+                    showToast('Message sent successfully! We\'ll contact you soon.', 'success');
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Reset button
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 2000);
+            } else {
+                showToast('Please fill in all required fields.', 'error');
+            }
+        });
+        
+        // Remove error class on input
+        contactForm.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('input', function() {
+                this.classList.remove('error');
+            });
+        });
+    }
+    
+    // ============================================
+    // ENHANCE ACCESSIBILITY FOR BRANDS SECTION
+    // ============================================
+    
+    brandLogos.forEach(logo => {
+        logo.setAttribute('role', 'button');
+        logo.setAttribute('tabindex', '0');
+        
+        logo.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    });
+    
+    // ============================================
+    // LAZY LOAD FOR CASE STUDY IMAGES
+    // ============================================
+    
+    const caseStudyImages = document.querySelectorAll('.case-study-image img');
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src || img.src;
+                    img.classList.add('loaded');
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, { rootMargin: '50px' });
+        
+        caseStudyImages.forEach(img => {
+            if (img.dataset.src) {
+                imageObserver.observe(img);
+            }
+        });
+    }
+    
+    // ============================================
+    // STICKY NAVIGATION HIGHLIGHT FOR SECTIONS
+    // ============================================
+    
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-item a');
+    
+    function highlightNavOnScroll() {
+        let scrollPosition = window.scrollY + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', highlightNavOnScroll);
+    
+    // ============================================
+    // COPYRIGHT YEAR UPDATE
+    // ============================================
+    
+    const copyrightElement = document.querySelector('.copyright');
+    if (copyrightElement) {
+        const currentYear = new Date().getFullYear();
+        copyrightElement.innerHTML = copyrightElement.innerHTML.replace(/2025/g, currentYear);
+    }
+    
+    // ============================================
+    // SOCIAL SHARE FUNCTIONALITY
+    // ============================================
+    
+    const socialLinks = document.querySelectorAll('.social-link');
+    socialLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const platform = this.getAttribute('aria-label').toLowerCase();
+            const currentUrl = encodeURIComponent(window.location.href);
+            const pageTitle = encodeURIComponent(document.title);
+            
+            let shareUrl = '';
+            
+            switch (platform) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+                    break;
+                case 'linkedin':
+                    shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${currentUrl}&title=${pageTitle}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?url=${currentUrl}&text=${pageTitle}`;
+                    break;
+                default:
+                    return;
+            }
+            
+            window.open(shareUrl, '_blank', 'width=600,height=400');
+        });
+    });
+    
+    // ============================================
+    // PRINT-FRIENDLY STYLES
+    // ============================================
+    
+    const printBtn = document.createElement('button');
+    printBtn.className = 'print-btn';
+    printBtn.innerHTML = '<i class="fas fa-print"></i> Print Page';
+    printBtn.style.cssText = `
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        z-index: 100;
+        display: none;
+    `;
+    
+    document.body.appendChild(printBtn);
+    
+    printBtn.addEventListener('click', function() {
+        window.print();
+    });
+    
+    // Show print button on desktop
+    if (window.innerWidth > 768) {
+        printBtn.style.display = 'block';
+    }
+    
+    window.addEventListener('resize', function() {
+        printBtn.style.display = window.innerWidth > 768 ? 'block' : 'none';
+    });
+    
+    console.log('Panda Ads page JavaScript loaded successfully!');
+});
+
+// ============================================
+// HELPER FUNCTIONS
+// ============================================
+
+// Toast notification function
+function showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'error' ? '#f44336' : type === 'success' ? '#4CAF50' : '#2196F3'};
+        color: white;
+        padding: 12px 24px;
+        border-radius: 4px;
+        z-index: 9999;
+        animation: slideIn 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    `;
+    
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
+// Add CSS animations for toast
+if (!document.querySelector('#toast-animations')) {
+    const style = document.createElement('style');
+    style.id = 'toast-animations';
+    style.textContent = `
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
+        /* Form error styling */
+        .error {
+            border-color: #f44336 !important;
+        }
+        
+        .error:focus {
+            box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2) !important;
+        }
+    `;
+    document.head.appendChild(style);
+}

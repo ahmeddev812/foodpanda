@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda Ads | Retail Media Advertising Solutions by foodpanda</title>
+    <meta name="description"
+        content="Reach millions of customers with panda ads. Leverage foodpanda's first-party data, precise audience targeting, and retail media solutions to boost brand visibility, engagement and growth.">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom animations for Panda Ads page */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Staggered animations for cards */
+        .stagger-animation>* {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .stagger-animation>*:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-animation>*:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-animation>*:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-animation>*:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .stagger-animation>*:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .stagger-animation>*:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <img src="./Assets/foodpanda_logo_2023.jpg" alt="Foodpanda Logo" class="logo-img">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="main-nav" id="mainNav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="./index.html">Home</a></li>
+                        <li class="nav-item"><a href="./About.html">About</a></li>
+                        <li class="nav-item"><a href="newsroom.html">Newsroom</a></li>
+                        <li class="nav-item"><a href="partners.html">Partners</a></li>
+                        <li class="nav-item active"><a href="./Panda Ads.html">Panda Ads</a></li>
+                        <li class="nav-item"><a href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a href="careers.html">Careers</a></li>
+
+                        <!-- Location Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="dropdown-toggle">Choose location <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Bangladesh</a></li>
+                                <li><a href="#">Cambodia</a></li>
+                                <li><a href="#">Hong Kong</a></li>
+                                <li><a href="#">Malaysia</a></li>
+                                <li><a href="#">Philippines</a></li>
+                                <li><a href="#">Singapore</a></li>
+                                <li><a href="#">Thailand</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Search and Mobile Menu -->
+                <div class="header-right">
+                    <!-- Search Button -->
+                    <button class="search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+
+                <!-- Search Form -->
+                <div class="search-overlay" id="searchOverlay">
+                    <div class="search-container">
+                        <form class="search-form" id="searchForm">
+                            <input type="text" placeholder="Search solutions, case studies, or insights..."
+                                class="search-input" id="searchInput">
+                            <button type="submit" class="search-submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                        <button class="search-close" id="searchClose">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav class="mobile-nav" id="mobileNav">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="./index.html">Home</a></li>
+                    <li class="mobile-nav-item"><a href="./About.html">About</a></li>
+                    <li class="mobile-nav-item"><a href="newsroom.html">Newsroom</a></li>
+                    <li class="mobile-nav-item"><a href="partners.html">Partners</a></li>
+                    <li class="mobile-nav-item active"><a href="./Panda Ads.html">Panda Ads</a></li>
+                    <li class="mobile-nav-item"><a href="contact.html">Contact</a></li>
+                    <li class="mobile-nav-item"><a href="careers.html">Careers</a></li>
+
+                    <!-- Mobile Location Dropdown -->
+                    <li class="mobile-nav-item dropdown">
+                        <a href="#" class="mobile-dropdown-toggle">Choose location <i
+                                class="fas fa-chevron-down"></i></a>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="#">Bangladesh</a></li>
+                            <li><a href="#">Cambodia</a></li>
+                            <li><a href="#">Hong Kong</a></li>
+                            <li><a href="#">Malaysia</a></li>
+                            <li><a href="#">Philippines</a></li>
+                            <li><a href="#">Singapore</a></li>
+                            <li><a href="#">Thailand</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero hero-panda-ads">
+        <div class="hero-video-container">
+            <img src="./Assets/foodpanda-panda-ads.webp" alt="Panda Ads - Retail Media Solutions"
+                class="hero-background-img">
+            <div class="video-overlay"></div>
+            <div class="hero-content">
+                <div class="container">
+                    <h1 class="hero-title">
+                        Reach millions<br>
+                        with <strong>panda ads</strong>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Advertise with foodpanda and connect with millions of ready-to-shop customers
+                        within and beyond the foodpanda app.
+                    </p>
+                    <a href="#contact" class="btn btn-primary btn-hero">Get in touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="section-title text-center">
+                Boost your brand with Asia's largest<br>
+                food and grocery delivery network*
+            </h2>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 class="stat-number">125M</h3>
+                    <p class="stat-label">app downloads</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number">11</h3>
+                    <p class="stat-label">markets</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number">400+</h3>
+                    <p class="stat-label">cities</p>
+                </div>
+            </div>
+            <p class="stats-disclaimer">*outside of China</p>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title text-center">Power up your visibility & engagement</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <img src="./Assets/jpeg-optimizer_73_Weekly-Highlights_04_.png" alt="Maximize reach">
+                    </div>
+                    <h3 class="benefit-title">Maximise your reach</h3>
+                    <p class="benefit-description">
+                        Amplify your campaign by connecting with your target customers
+                        right where they shop.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <img src="./Assets/jpeg-optimizer_72_New-arrivals.png" alt="Engage audiences">
+                    </div>
+                    <h3 class="benefit-title">Engage high-value audiences</h3>
+                    <p class="benefit-description">
+                        Leverage our first-party data and advanced targeting to
+                        connect with the right audience.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <img src="./Assets/jpeg-optimizer_56_stationary-1.png" alt="Personalized support">
+                    </div>
+                    <h3 class="benefit-title">Get personalised support</h3>
+                    <p class="benefit-description">
+                        Achieve your marketing goals and drive growth with personalised
+                        support, insights, and more.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions-section">
+        <div class="container">
+            <h2 class="section-title text-center">
+                Customised retail media advertising solutions for your brand's needs
+            </h2>
+
+            <!-- Solution 1 -->
+            <div class="solution-item">
+                <div class="solution-image">
+                    <img src="./Assets/jpeg-optimizer_in-app-1024x683.png" alt="In-app advertising">
+                </div>
+                <div class="solution-content">
+                    <h2 class="solution-title">In-app advertising</h2>
+                    <p class="solution-description">
+                        Increase brand visibility with native display ads across different
+                        categories on the foodpanda app.
+                    </p>
+                    <a href="solutions.html" class="btn btn-primary">Explore solutions</a>
+                </div>
+            </div>
+
+
+            <!-- Solution 2 -->
+            <div class="solution-item">
+                <div class="solution-content">
+                    <h2 class="solution-title">Off-app advertising</h2>
+                    <p class="solution-description">
+                        Amplify your campaigns with foodpanda, from email marketing and
+                        social media to rider bag ads and product sampling.
+                    </p>
+                    <a href="solutions.html" class="btn btn-primary">Explore solutions</a>
+                </div>
+                <div class="solution-image">
+                    <img src="./Assets/jpeg-optimizer_panda-ads-website-homepage-off-app-solutions-highres-1024x683.png"
+                        alt="Off-app advertising">
+                </div>
+            </div>
+
+            <!-- Solution 3 -->
+            <div class="solution-item">
+                <div class="solution-image">
+                    <img src="./Assets/jpeg-optimizer_panda-ads-website-homepage-strategic-partnerships-highres-1024x685.png"
+                        alt="Strategic partnerships">
+                </div>
+                <div class="solution-content">
+                    <h2 class="solution-title">Strategic partnerships</h2>
+                    <p class="solution-description">
+                        Execute integrated campaigns for maximum impact, with tailored
+                        solutions like vouchers, data partnerships and consumer insights.
+                    </p>
+                    <a href="solutions.html" class="btn btn-primary">Explore solutions</a>
+                </div>
+            </div>
+
+            <!-- Solution 4 -->
+            <div class="solution-item">
+                <div class="solution-content">
+                    <h2 class="solution-title">Advanced targeting with panda ads</h2>
+                    <p class="solution-description">
+                        Maximise your ROI and connect with a broader, more relevant audience
+                        through precise targeting powered by our first-party data.
+                    </p>
+                    <a href="solutions.html" class="btn btn-primary">Explore solutions</a>
+                </div>
+                <div class="solution-image">
+                    <img src="./Assets/jpeg-optimizer_audience-targeting-1024x683.png" alt="Advanced targeting">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Proven impact with panda ads</h2>
+                <p class="section-subtitle">
+                    See how leading brands achieve remarkable results with our advertising solutions.
+                </p>
+            </div>
+
+            <div class="case-studies-grid">
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <img src="./Assets/jpeg-optimizer_coca-cola-1-900x507.jpeg" alt="Coca-Cola case study">
+                    </div>
+                    <div class="case-study-content">
+                        <h3 class="case-study-title">
+                            Coca-Cola leveraged retail media channels to boost sales and drive growth
+                        </h3>
+                        <a href="case-studies/coca-cola.html" class="btn btn-secondary">Read more</a>
+                    </div>
+                </div>
+
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <img src="./Assets/jpeg-optimizer_PandaAds_Eclipse_Thumbnail_v2-900x506.jpeg" alt="Mars Wrigley case study">
+                    </div>
+                    <div class="case-study-content">
+                        <h3 class="case-study-title">
+                            Mars Wrigley finds the perfect audience for its new product with panda ads
+                        </h3>
+                        <a href="case-studies/mars-wrigley.html" class="btn btn-secondary">Read more</a>
+                    </div>
+                </div>
+
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <img src="./Assets/jpeg-optimizer_amazon.jpeg" alt="Amazon Prime case study">
+                    </div>
+                    <div class="case-study-content">
+                        <h3 class="case-study-title">
+                            Amazon Prime Video and foodpanda's impressive entertainment strategy
+                        </h3>
+                        <a href="case-studies/amazon-prime.html" class="btn btn-secondary">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title text-center">What our customers are saying</h2>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <blockquote class="testimonial-quote">
+                        "We were looking for a large APAC-wide partner with premium O&O mobile ad
+                        inventory that could connect us to our target audiences. panda ads were able
+                        to be that partner and have delivered beyond our campaign's target KPIs."
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <strong>Luke Addison</strong>
+                        <p>Managing Director</p>
+                    </div>
+                    <div class="testimonial-company">
+                        <img src="./Assets/egentics-Photoroom.png" alt="Egentics">
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <blockquote class="testimonial-quote">
+                        "As one of the goals from 2023 was to accelerate quick commerce growth through
+                        new activations and media, tapping into panda ads helped us grow our quick
+                        commerce business and deliver on our KPIs."
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <strong>Jayson Lopez</strong>
+                        <p>Senior Media and Digital Marketing Manager</p>
+                    </div>
+                    <div class="testimonial-company">
+                        <img src="./Assets/Universal-Robina-Logo-1024x576.png" alt="Universal Robina">
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <blockquote class="testimonial-quote">
+                        "The collaboration with foodpanda through panda ads greatly enhanced our
+                        customer acquisition initiatives, by capturing our audience's interest and
+                        fostering heightened user engagement."
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <strong>Jessica Faye Tan</strong>
+                        <p>Head of Commercial</p>
+                    </div>
+                    <div class="testimonial-company">
+                        <img src="./Assets/moneymax_owler_20201020_015917_original-1024x261.png" alt="Moneymax">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Start advertising with panda ads today!</h2>
+                <a href="contact.html" class="btn btn-primary btn-large">Get in touch!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands-section">
+        <div class="container">
+            <h2 class="section-title text-center">Brands excelling with us</h2>
+
+            <div class="brands-grid">
+                <div class="brand-logo"><img src="./Assets/1.png" alt="Brand 1"></div>
+                <div class="brand-logo"><img src="./Assets/2.png" alt="Brand 2"></div>
+                <div class="brand-logo"><img src="./Assets/3.png" alt="Brand 3"></div>
+                <div class="brand-logo"><img src="./Assets/4.png" alt="Brand 4"></div>
+                <div class="brand-logo"><img src="./Assets/5.png" alt="Brand 5"></div>
+                <div class="brand-logo"><img src="./Assets/6.png" alt="Brand 6"></div>
+                <div class="brand-logo"><img src="./Assets/7.png" alt="Brand 7"></div>
+                <div class="brand-logo"><img src="./Assets/8.png" alt="Brand 8"></div>
+                <div class="brand-logo"><img src="./Assets/9.png" alt="Brand 9"></div>
+                <div class="brand-logo"><img src="./Assets/10.png" alt="Brand 10"></div>
+                <div class="brand-logo"><img src="./Assets/11.png" alt="Brand 11"></div>
+                <div class="brand-logo"><img src="./Assets/12.png" alt="Brand 12"></div>
+                <div class="brand-logo"><img src="./Assets/13.png" alt="Brand 13"></div>
+                <div class="brand-logo"><img src="./Assets/14.png" alt="Brand 14"></div>
+                <div class="brand-logo"><img src="./Assets/15.png" alt="Brand 15"></div>
+                <div class="brand-logo"><img src="./Assets/16.png" alt="Brand 16"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Footer Logo -->
+            <div class="footer-logo">
+                <img src="./Assets/foodpanda_logo_2023-removebg-preview.png" alt="Foodpanda Logo"
+                    class="footer-logo-img">
+            </div>
+
+            <!-- Footer Navigation -->
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Navigate</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="newsroom.html">Newsroom</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Collaborate</h3>
+                    <ul class="footer-links">
+                        <li><a href="careers.html">Explore careers</a></li>
+                        <li><a href="riders.html">Become a rider</a></li>
+                        <li><a href="corporate.html">Feed your team</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Follow us on</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2025 Foodpanda
+                </div>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript Files -->
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
