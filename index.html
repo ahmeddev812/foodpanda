@@ -16,94 +16,34 @@
 </head>
 <body>
     <!-- Header / Navigation -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="index.html" class="logo-link">
-                        <img src="./Assets/foodpanda_logo_2023.jpg" 
-                             alt="Foodpanda Logo" 
-                             class="logo-img">
-                    </a>
-                </div>
-
-                <!-- Desktop Navigation -->
-                <nav class="main-nav" id="mainNav">
-                    <ul class="nav-list">
-                        <li class="nav-item active"><a href="index.html">Home</a></li>
-                        <li class="nav-item"><a href="about.html">About</a></li>
-                        <li class="nav-item"><a href="newsroom.html">Newsroom</a></li>
-                        <li class="nav-item"><a href="partners.html">Partners</a></li>
-                        <li class="nav-item"><a href="panda-ads.html">Panda Ads</a></li>
-                        <li class="nav-item"><a href="contact.html">Contact</a></li>
-                        <li class="nav-item"><a href="careers.html">Careers</a></li>
-                        
-                        <!-- Location Dropdown -->
-                        <li class="nav-item dropdown">
-                            <a href="#" class="dropdown-toggle">Choose location </i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Bangladesh</a></li>
-                                <li><a href="#">Cambodia</a></li>
-                                <li><a href="#">Hong Kong</a></li>
-                                <li><a href="#">Malaysia</a></li>
-                                <li><a href="#">Philippines</a></li>
-                                <li><a href="#">Singapore</a></li>
-                                <li><a href="#">Thailand</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-
-                <!-- Search and Mobile Menu -->
-                <div class="header-right">
-                    <!-- Search Button -->
-                    <button class="search-btn" id="searchBtn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    
-                    <!-- Mobile Menu Toggle -->
-                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                    </button>
-                </div>
-                
-                <!-- Search Form -->
-                <div class="search-overlay" id="searchOverlay">
-                    <div class="search-container">
-                        <form class="search-form" id="searchForm">
-                            <input type="text" 
-                                   placeholder="Search food, restaurants, or cuisines..." 
-                                   class="search-input"
-                                   id="searchInput">
-                            <button type="submit" class="search-submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                        <button class="search-close" id="searchClose">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                </div>
+   <!-- Header / Navigation -->
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="./Assets/foodpanda_logo_2023.jpg" 
+                         alt="Foodpanda Logo" 
+                         class="logo-img">
+                </a>
             </div>
-            
-            <!-- Mobile Navigation -->
-            <nav class="mobile-nav" id="mobileNav">
-                <ul class="mobile-nav-list">
-                    <li class="mobile-nav-item active"><a href="index.html">Home</a></li>
-                    <li class="mobile-nav-item"><a href="about.html">About</a></li>
-                    <li class="mobile-nav-item"><a href="newsroom.html">Newsroom</a></li>
-                    <li class="mobile-nav-item"><a href="partners.html">Partners</a></li>
-                    <li class="mobile-nav-item"><a href="panda-ads.html">Panda Ads</a></li>
-                    <li class="mobile-nav-item"><a href="contact.html">Contact</a></li>
-                    <li class="mobile-nav-item"><a href="careers.html">Careers</a></li>
+
+            <!-- Desktop Navigation -->
+            <nav class="main-nav" id="mainNav">
+                <ul class="nav-list">
+                    <li class="nav-item active"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="about.html">About</a></li>
+                    <li class="nav-item"><a href="newsroom.html">Newsroom</a></li>
+                    <li class="nav-item"><a href="partners.html">Partners</a></li>
+                    <li class="nav-item"><a href="panda-ads.html">Panda Ads</a></li>
+                    <li class="nav-item"><a href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a href="careers.html">Careers</a></li>
                     
-                    <!-- Mobile Location Dropdown -->
-                    <li class="mobile-nav-item dropdown">
-                        <a href="#" class="mobile-dropdown-toggle">Choose location <i class="fas fa-chevron-down"></i></a>
-                        <ul class="mobile-dropdown-menu">
+                    <!-- Location Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a href="#" class="dropdown-toggle">Choose location </i></a>
+                        <ul class="dropdown-menu">
                             <li><a href="#">Bangladesh</a></li>
                             <li><a href="#">Cambodia</a></li>
                             <li><a href="#">Hong Kong</a></li>
@@ -115,8 +55,69 @@
                     </li>
                 </ul>
             </nav>
+
+            <!-- Search and Mobile Menu - Moved to the right -->
+            <div class="header-right">
+                <!-- Search Button -->
+                <button class="search-btn" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+            
+            <!-- Search Form -->
+            <div class="search-overlay" id="searchOverlay">
+                <div class="search-container">
+                    <form class="search-form" id="searchForm">
+                        <input type="text" 
+                               placeholder="Search food, restaurants, or cuisines..." 
+                               class="search-input"
+                               id="searchInput">
+                        <button type="submit" class="search-submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <button class="search-close" id="searchClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-    </header>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobileNav">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item active"><a href="index.html">Home</a></li>
+                <li class="mobile-nav-item"><a href="about.html">About</a></li>
+                <li class="mobile-nav-item"><a href="newsroom.html">Newsroom</a></li>
+                <li class="mobile-nav-item"><a href="partners.html">Partners</a></li>
+                <li class="mobile-nav-item"><a href="panda-ads.html">Panda Ads</a></li>
+                <li class="mobile-nav-item"><a href="contact.html">Contact</a></li>
+                <li class="mobile-nav-item"><a href="careers.html">Careers</a></li>
+                
+                <!-- Mobile Location Dropdown -->
+                <li class="mobile-nav-item dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">Choose location <i class="fas fa-chevron-down"></i></a>
+                    <ul class="mobile-dropdown-menu">
+                        <li><a href="#">Bangladesh</a></li>
+                        <li><a href="#">Cambodia</a></li>
+                        <li><a href="#">Hong Kong</a></li>
+                        <li><a href="#">Malaysia</a></li>
+                        <li><a href="#">Philippines</a></li>
+                        <li><a href="#">Singapore</a></li>
+                        <li><a href="#">Thailand</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
     <!-- Hero Section with Video -->
     <section class="hero">
