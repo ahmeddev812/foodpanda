@@ -593,6 +593,7 @@ if (!('scrollBehavior' in document.documentElement.style)) {
     // Load polyfill or implement fallback
     console.warn('Smooth scroll not supported in this browser');
 }
+
 // ============================================
 // PANDA ADS PAGE SPECIFIC FUNCTIONALITY
 // ============================================
@@ -601,19 +602,21 @@ if (!('scrollBehavior' in document.documentElement.style)) {
 document.addEventListener('DOMContentLoaded', function() {
     
     // ============================================
-    // ANIMATE STATS COUNTER
+    // ANIMATE STATS COUNTER - FIXED VERSION
     // ============================================
     
     const statNumbers = document.querySelectorAll('.stat-number');
     
     function animateStats() {
         statNumbers.forEach(stat => {
-            const targetNumber = parseInt(stat.textContent.replace(/[^0-9]/g, ''));
-            const prefix = stat.textContent.replace(/[0-9]/g, '').trim();
-            const suffix = stat.textContent.replace(/[^0-9\+]/g, '').replace(/[0-9]/g, '');
+            const originalText = stat.textContent;
+            // Extract numbers only
+            const targetNumber = parseInt(originalText.replace(/[^0-9]/g, '')) || 0;
+            // Extract everything that's not a number (like M, +, etc.)
+            const nonNumericParts = originalText.replace(/[0-9]/g, '');
             
             // Reset for animation
-            stat.textContent = '0';
+            stat.textContent = '0' + nonNumericParts;
             
             // Animate counter
             let current = 0;
@@ -624,7 +627,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     current = targetNumber;
                     clearInterval(timer);
                 }
-                stat.textContent = prefix + Math.floor(current) + suffix;
+                stat.textContent = Math.floor(current) + nonNumericParts;
             }, 50);
         });
     }
@@ -1071,7 +1074,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // HELPER FUNCTIONS
 // ============================================
 
-// Toast notification function
+// Toast notification function - Fixed duplicate
 function showToast(message, type = 'info') {
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
