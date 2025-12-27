@@ -506,40 +506,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('resize', optimizedResize);
     
-    // ============================================
-    // ACCESSIBILITY IMPROVEMENTS
-    // ============================================
-    
-    // Add focus styles for keyboard navigation
-    document.addEventListener('keyup', function(e) {
-        if (e.key === 'Tab') {
-            document.body.classList.add('user-is-tabbing');
-        }
-    });
-    
-    document.addEventListener('mousedown', function() {
-        document.body.classList.remove('user-is-tabbing');
-    });
-    
-    // Add skip to content link functionality
-    const skipLink = document.createElement('a');
-    skipLink.href = '#main-content';
-    skipLink.className = 'skip-to-content';
-    skipLink.textContent = 'Skip to main content';
-    document.body.insertBefore(skipLink, document.body.firstChild);
-    
-    // Add main content ID if not exists
-    if (!document.getElementById('main-content')) {
-        const mainContent = document.querySelector('main') || document.querySelector('.hero');
-        if (mainContent) {
-            mainContent.id = 'main-content';
-            mainContent.setAttribute('tabindex', '-1');
-        }
-    }
-    
-    console.log('Foodpanda website JavaScript loaded successfully!');
-});
+   
 
+});
+   
 // ============================================
 // GLOBAL FUNCTIONS (if needed)
 // ============================================
