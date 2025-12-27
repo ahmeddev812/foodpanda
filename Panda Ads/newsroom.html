@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsroom | panda ads by foodpanda</title>
+    <link rel="stylesheet" href="../Panda Ads/Panda ads css/panda ads.css">
+    <link rel="stylesheet" href="newsroom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: "Copy";
+            src: url("https://pandaads.foodpanda.com/wp-content/themes/wp-delivery-hero-core-v2/assets/font/OpenSans-Variable.woff2") format("woff2 supports variations"),
+                url("https://pandaads.foodpanda.com/wp-content/themes/wp-delivery-hero-core-v2/assets/font/OpenSans-Variable.woff2") format("woff2-variations");
+            font-weight: 400 700;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Heading";
+            src: url("https://pandaads.foodpanda.com/wp-content/themes/wp-delivery-hero-core-v2/assets/font/Montserrat-Variable.woff2") format("woff2 supports variations"),
+                url("https://pandaads.foodpanda.com/wp-content/themes/wp-delivery-hero-core-v2/assets/font/Montserrat-Variable.woff2") format("woff2-variations");
+            font-weight: 700 800;
+            font-display: swap;
+        }
+        
+        body {
+            font-family: "Copy", sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Heading", sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navbar (same as your original) -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="./pandaads.html" class="logo-link">
+                        <img src="../Assets/foodpanda_panda-ads_logo.jpg" alt="Foodpanda Logo" class="logo-img">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="main-nav" id="mainNav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="../Panda Ads/pandaads.html">Home</a></li>
+                        <li class="nav-item"><a href="../Panda Ads/solutions.html">Solutions</a></li>
+
+                        <li class="nav-item dropdown">
+                            <a href="#">
+                                Resources
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../Panda Ads/insights.html">Insights</a></li>
+                                <li><a href="../Panda Ads/case.html">Case Studies</a></li>
+                                <li class="active"><a href="../Panda Ads/newsroom.html">Newsroom</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a href="#">
+                                Tools
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../Panda Ads/media kit generator.html" target="_blank">Media Kit Generator</a></li>
+                                <li><a href="./marketer-personality-quiz.html">Marketer Personality Quiz</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a href="./contact.html" class="dropdown-toggle">
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Search and Mobile Menu -->
+                <div class="header-right">
+                    <!-- Search Button -->
+                    <button class="search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+
+                <!-- Search Form -->
+                <div class="search-overlay" id="searchOverlay">
+                    <div class="search-container">
+                        <form class="search-form" id="searchForm">
+                            <input type="text" placeholder="Search solutions, case studies, or insights..."
+                                class="search-input" id="searchInput">
+                            <button type="submit" class="search-submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                        <button class="search-close" id="searchClose">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav class="mobile-nav" id="mobileNav">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item"><a href="../Panda Ads/pandaads.html">Home</a></li>
+                    <li class="mobile-nav-item"><a href="../Panda Ads/solutions.html">Solutions</a></li>
+
+                    <!-- Mobile Resources Dropdown -->
+                    <li class="mobile-nav-item dropdown">
+                        <a href="#" class="mobile-dropdown-toggle">
+                            Resources
+                        </a>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="../Panda Ads/insights.html">Insights</a></li>
+                            <li><a href="../Panda Ads/case.html">Case Studies</a></li>
+                            <li class="active"><a href="../Panda Ads/newsroom.html">Newsroom</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Mobile Tools Dropdown -->
+                    <li class="mobile-nav-item dropdown">
+                        <a href="#" class="mobile-dropdown-toggle">
+                            Tools
+                        </a>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="../Panda Ads/media kit generator.html" target="_blank">Media Kit Generator</a></li>
+                            <li><a href="./marketer-personality-quiz.html">Marketer Personality Quiz</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Mobile Contact Us -->
+                    <li class="mobile-nav-item"><a href="../Panda Ads/contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="newsroom-main">
+        <!-- Featured Press Release Section -->
+        <section class="featured-press-release">
+            <div class="container">
+                <h1 class="section-title">Press Releases</h1>
+                
+                <div class="featured-article">
+                    <div class="featured-content ">
+                        <span class="article-category">Industry Insights</span>
+                        <span class="article-date">11 Dec 2024</span>
+                        <a href="../Panda Ads/newsroom.html"><h2 class="featured-title">Maximising omnichannel campaigns with retail media networks</h2></a>
+                       
+                      
+                    </div>
+                    <div class="featured-image">
+                        <img src="../Assets/jpeg-optimizer_Maximising-omnichannel-campaigns-with-Retail-Media-Networks.png" 
+                             alt="Maximising omnichannel campaigns with retail media networks">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Filter Section -->
+        <section class="news-filter">
+            <div class="container">
+                <h3 class="filter-title">Discover Latest News</h3>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-category="all">All</button>
+                    <button class="filter-tab" data-category="consumer-trends">Consumer Trends</button>
+                    <button class="filter-tab" data-category="industry-insights">Industry Insights</button>
+                    <button class="filter-tab" data-category="panda-ads">panda ads</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Grid Section -->
+        <section class="news-grid" id="newsGrid">
+            <div class="container">
+                <div class="news-articles">
+                    <!-- Article 1 -->
+                    <article class="news-card" data-category="industry-insights">
+                        <div class="news-image">
+                            <img src="../Assets/jpeg-optimizer_Maximising-omnichannel-campaigns-with-Retail-Media-Networks.png" 
+                                 alt="Maximising omnichannel campaigns with retail media networks">
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Maximising omnichannel campaigns with retail media networks</h3>
+                            <div class="news-meta">
+                                <span class="news-category">Industry Insights</span>
+                                <span class="news-date">11.12.2024</span>
+                            </div>
+                            <a href="#" 
+                               class="news-link">Read More</a>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="news-card" data-category="consumer-trends">
+                        <div class="news-image">
+                            <img src="../Assets/jpeg-optimizer_blog-visual.png" 
+                                 alt="5 Effective ways to leverage retail media networks this holiday season">
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">5 Effective ways to leverage retail media networks this holiday season</h3>
+                            <div class="news-meta">
+                                <span class="news-category">Consumer Trends</span>
+                                <span class="news-date">07.11.2024</span>
+                            </div>
+                            <a href="#" 
+                               class="news-link">Read More</a>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="news-card" data-category="industry-insights">
+                        <div class="news-image">
+                            <img src="../Assets/jpeg-optimizer_blog-header_v2.png" 
+                                 alt="Cookies are here to stay but first-party data still takes the cake">
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Cookies are here to stay but first-party data still takes the cake</h3>
+                            <div class="news-meta">
+                                <span class="news-category">Industry Insights</span>
+                                <span class="news-date">07.11.2024</span>
+                            </div>
+                            <a href="#" 
+                               class="news-link">Read More</a>
+                        </div>
+                    </article>
+
+                    <!-- Article 4 -->
+                    <article class="news-card" data-category="panda-ads">
+                        <div class="news-image">
+                            <img src="../Assets/foodpanda-panda-ads-6-ways-to-help-brands-blog-header.webp" 
+                                 alt="6 Ways to reach high-value customers with panda ads">
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">6 Ways to reach high-value customers with panda ads</h3>
+                            <div class="news-meta">
+                                <span class="news-category">panda ads</span>
+                                <span class="news-date">08.08.2024</span>
+                            </div>
+                            <a href="#" 
+                               class="news-link">Read More</a>
+                        </div>
+                    </article>
+
+                    <!-- Article 5 -->
+                    <article class="news-card" data-category="panda-ads">
+                        <div class="news-image">
+                            <img src="../Assets/foodpanda-panda-ads-Retail-media-trends-header-scaled.webp" 
+                                 alt="Retail media 101: The new frontier in digital advertising">
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">Retail media 101: The new frontier in digital advertising</h3>
+                            <div class="news-meta">
+                                <span class="news-category">panda ads</span>
+                                <span class="news-date">30.07.2024</span>
+                            </div>
+                            <a href="#" 
+                               class="news-link">Read More</a>
+                        </div>
+                    </article>
+
+                    <!-- Article 6 -->
+                    <article class="news-card" data-category="consumer-trends">
+                        <div class="news-image">
+                            <img src="../Assets/panda-ads-foodpanda-Shopper-Trends-Blog-Header-Image.webp" 
+                                 alt="APAC food delivery and Q-commerce insights">
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">APAC food delivery and Q-commerce insights</h3>
+                            <div class="news-meta">
+                                <span class="news-category">Consumer Trends</span>
+                                <span class="news-date">30.07.2024</span>
+                            </div>
+                            <a href="#" 
+                               class="news-link">Read More</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (same as your original) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="../Assets/foodpanda_logo_2023-removebg-preview.png" alt="Foodpanda Logo" class="footer-logo-img">
+            </div>
+
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Our company</h3>
+                    <ul class="footer-links">
+                        <li><a href="../About.html">About foodpanda</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">panda ads</h3>
+                    <ul class="footer-links">
+                        <li><a href="../Panda Ads/solutions.html">Retail media solutions</a></li>
+                        <li><a href="../Panda Ads/media kit generator.html">Media kit generator</a></li>
+                        <li><a href="../Panda Ads/case.html">Case studies</a></li>
+                        <li><a href="../Panda Ads/insights.html">Industry Insights</a></li>
+                        <li><a href="../Panda Ads/newsroom.html">Newsroom</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Get in touch!</h3>
+                    <ul class="footer-links">
+                        <li><a href="../Panda Ads/contact.html">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Foodpanda</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">↑</button>
+
+    <!-- JavaScript Files -->
+    <script src="../Panda Ads/Panda ads js/panda ads.js"></script>
+
+</body>
+</html>

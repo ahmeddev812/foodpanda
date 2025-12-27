@@ -25,6 +25,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -68,100 +69,140 @@
 </head>
 
 <body>
-    <!-- Header / Navigation -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="./pandaads.html" class="logo-link">
-                        <img src="../Assets/foodpanda_panda-ads_logo.jpg" alt="Foodpanda Logo" class="logo-img">
-                    </a>
-                </div>
-
-                <!-- Desktop Navigation -->
-                <nav class="main-nav" id="mainNav">
-                    <ul class="nav-list">
-                        <li class="nav-item active"><a href="./pandaads.html">Home</a></li>
-                        <li class="nav-item "><a href="./solutions.html">Solutions</a></li>
-                        <li class="nav-item"><a href="./resources.html">Resources</a></li>
-                        <li class="nav-item"><a href="./tools.html">Tools</a></li>
-
-
-
-                        <!-- Location Dropdown -->
-                        <li class="nav-item dropdown">
-                            <a href="./contact.html" class="dropdown-toggle">Contact Us </a>
-
-                </nav>
-
-                <!-- Search and Mobile Menu -->
-                <div class="header-right">
-                    <!-- Search Button -->
-                    <button class="search-btn" id="searchBtn">
-                        <i class="fas fa-search"></i>
-                    </button>
-
-                    <!-- Mobile Menu Toggle -->
-                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                    </button>
-                </div>
-
-                <!-- Search Form -->
-                <div class="search-overlay" id="searchOverlay">
-                    <div class="search-container">
-                        <form class="search-form" id="searchForm">
-                            <input type="text" placeholder="Search solutions, case studies, or insights..."
-                                class="search-input" id="searchInput">
-                            <button type="submit" class="search-submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                        <button class="search-close" id="searchClose">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                </div>
+   
+   <!-- Header / Navigation -->
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="./pandaads.html" class="logo-link">
+                    <img src="../Assets/foodpanda_panda-ads_logo.jpg" alt="Foodpanda Logo" class="logo-img">
+                </a>
             </div>
 
-            <!-- Mobile Navigation -->
-            <nav class="mobile-nav" id="mobileNav">
-                <ul class="mobile-nav-list">
-                    <li class="mobile-nav-item active"><a href="./pandaads.html">Home</a></li>
-                    <li class="mobile-nav-item"><a href="./solutions.html">Solutions</a></li>
-                    <li class="mobile-nav-item"><a href="./resources.html">Resources</a></li>
-                    <li class="mobile-nav-item"><a href="./tools.html">Tools</a></li>
-
-                    <!-- Mobile Location Dropdown -->
-                    <li class="mobile-nav-item dropdown">
-                        <a href="./contact.html" class="mobile-dropdown-toggle">Contact Us </a>
+            <!-- Desktop Navigation -->
+            <nav class="main-nav" id="mainNav">
+                <ul class="nav-list">
+                    <li class="nav-item active"><a href="../Panda Ads/pandaads.html">Home</a></li>
+                    <li class="nav-item"><a href="../Panda Ads/solutions.html">Solutions</a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a href="#">
+                            Resources 
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../Panda Ads/insights.html">Insights</a></li>
+                            <li><a href="../Panda Ads/case.html">Case Studies</a></li>
+                            <li><a href="../Panda Ads/newsroom.html">Newsroom</a></li>
+                        </ul>
                     </li>
-                    </a>
+                    
+                   
+                    <li class="nav-item dropdown">
+                        <a href="#">
+                            Tools 
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://mediakit-pandaads.foodpanda.com/" target="_blank">Media Kit Generator</a></li>
+                            <li><a href="./marketer-personality-quiz.html">Marketer Personality Quiz</a></li>
+                        </ul>
+                    </li>
 
+ 
+                    <li class="nav-item dropdown">
+                        <a href="./contact.html" class="dropdown-toggle">
+                            Contact Us
+                        </a>
+                    </li>
+                </ul>
             </nav>
+
+            <!-- Search and Mobile Menu -->
+            <div class="header-right">
+                <!-- Search Button -->
+                <button class="search-btn" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+
+            <!-- Search Form -->
+            <div class="search-overlay" id="searchOverlay">
+                <div class="search-container">
+                    <form class="search-form" id="searchForm">
+                        <input type="text" placeholder="Search solutions, case studies, or insights..."
+                            class="search-input" id="searchInput">
+                        <button type="submit" class="search-submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                    <button class="search-close" id="searchClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-    </header>
-    <!-- Hero Section - FIXED -->
+
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobileNav">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item active"><a href="./pandaads.html">Home</a></li>
+                <li class="mobile-nav-item"><a href="./solutions.html">Solutions</a></li>
+                
+                <!-- Mobile Resources Dropdown -->
+                <li class="mobile-nav-item dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">
+                        Resources 
+                    </a>
+                    <ul class="mobile-dropdown-menu">
+                              <li><a href="../Panda Ads/insights.html">Insights</a></li>
+                            <li><a href="../Panda Ads/case.html">Case Studies</a></li>
+                            <li><a href="../Panda Ads/newsroom.html">Newsroom</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Mobile Tools Dropdown -->
+                <li class="mobile-nav-item dropdown">
+                    <a href="#" class="mobile-dropdown-toggle">
+                        Tools 
+                    </a>
+                    <ul class="mobile-dropdown-menu">
+                        <li><a href="https://mediakit-pandaads.foodpanda.com/" target="_blank">Media Kit Generator</a></li>
+                        <li><a href="./marketer-personality-quiz.html">Marketer Personality Quiz</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Mobile Contact Us -->
+                <li class="mobile-nav-item"><a href="./contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+    <!-- In your HTML -->
     <section class="hero hero-panda-ads" id="hero">
         <div class="hero-video-container">
-            <img src="../Assets/foodpanda-panda-ads.webp    " alt="Panda Ads - Retail Media Solutions"
-                class="hero-background-img">
+            <img src="../Assets/foodpanda-panda-ads.webp" alt="Panda Ads" class="hero-background-img">
             <div class="video-overlay"></div>
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        Reach millions<br>
-                        with <strong>panda ads</strong>
-                    </h1>
-                    <p class="hero-subtitle">
-                        Advertise with foodpanda and connect with millions of ready-to-shop customers
-                        within and beyond the foodpanda app.
-                    </p>
-                    <a href="#contact" class="btn ">Get in touch</a>
-                </div>
+        </div>
+        <!-- MOVE hero-content OUTSIDE the video container -->
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Reach millions<br>
+                    with panda ads
+                </h1>
+                <p class="hero-subtitle">
+                    Advertise with foodpanda and connect with millions of ready-to-shop customers
+                    within and beyond the foodpanda app.
+                </p>
+                <a href="../Panda Ads/contact.html" class="btn ">Get in touch</a>
             </div>
         </div>
     </section>
@@ -200,7 +241,7 @@
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <img src="assets/jpeg-optimizer_73_Weekly-Highlights_04_.png" alt="Maximize reach">
+                        <img src="../assets/jpeg-optimizer_73_Weekly-Highlights_04_.png" alt="Maximize reach">
                     </div>
                     <h3 class="benefit-title">Maximise your reach</h3>
                     <p class="benefit-description">
@@ -211,7 +252,7 @@
 
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <img src="assets/jpeg-optimizer_72_New-arrivals.png" alt="Engage audiences">
+                        <img src="../assets/jpeg-optimizer_72_New-arrivals.png" alt="Engage audiences">
                     </div>
                     <h3 class="benefit-title">Engage high-value audiences</h3>
                     <p class="benefit-description">
@@ -222,7 +263,7 @@
 
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <img src="assets/jpeg-optimizer_56_stationary-1.png" alt="Personalized support">
+                        <img src="../assets/jpeg-optimizer_56_stationary-1.png" alt="Personalized support">
                     </div>
                     <h3 class="benefit-title">Get personalised support</h3>
                     <p class="benefit-description">
@@ -244,7 +285,7 @@
             <!-- Solution 1 -->
             <div class="solution-item">
                 <div class="solution-image">
-                    <img src="assets/jpeg-optimizer_in-app-1024x683.png" alt="In-app advertising">
+                    <img src="../assets/jpeg-optimizer_in-app-1024x683.png" alt="In-app advertising">
                 </div>
                 <div class="solution-content">
                     <h2 class="solution-title">In-app advertising</h2>
@@ -252,22 +293,22 @@
                         Increase brand visibility with native display ads across different
                         categories on the foodpanda app.
                     </p>
-                    <a href="solutions.html" class="btn btn-primary">Explore solutions</a>
+                    <a href="../Panda Ads/solutions.html" class="btn btn-primary">Explore solutions</a>
                 </div>
             </div>
 
             <!-- Solution 2 -->
-            <div class="solution-item solution-reverse">
+            <div class="solution-item ">
                 <div class="solution-content">
                     <h2 class="solution-title">Off-app advertising</h2>
                     <p class="solution-description">
                         Amplify your campaigns with foodpanda, from email marketing and
                         social media to rider bag ads and product sampling.
                     </p>
-                    <a href="solutions.html" class="btn btn-primary">Explore solutions</a>
+                    <a href="../Panda Ads/solutions.html" class="btn btn-primary">Explore solutions</a>
                 </div>
                 <div class="solution-image">
-                    <img src="assets/jpeg-optimizer_panda-ads-website-homepage-off-app-solutions-highres-1024x683.png"
+                    <img src="../assets/jpeg-optimizer_panda-ads-website-homepage-off-app-solutions-highres-1024x683.png"
                         alt="Off-app advertising">
                 </div>
             </div>
@@ -275,7 +316,7 @@
             <!-- Solution 3 -->
             <div class="solution-item">
                 <div class="solution-image">
-                    <img src="assets/jpeg-optimizer_panda-ads-website-homepage-strategic-partnerships-highres-1024x685.png"
+                    <img src="../assets/jpeg-optimizer_panda-ads-website-homepage-strategic-partnerships-highres-1024x685.png"
                         alt="Strategic partnerships">
                 </div>
                 <div class="solution-content">
@@ -284,22 +325,22 @@
                         Execute integrated campaigns for maximum impact, with tailored
                         solutions like vouchers, data partnerships and consumer insights.
                     </p>
-                    <a href="solutions.html" class="btn btn-primary">Explore solutions</a>
+                    <a href="../Panda Ads/solutions.html" class="btn btn-primary">Explore solutions</a>
                 </div>
             </div>
 
             <!-- Solution 4 -->
-            <div class="solution-item solution-reverse">
+            <div class="solution-item ">
                 <div class="solution-content">
                     <h2 class="solution-title">Advanced targeting with panda ads</h2>
                     <p class="solution-description">
                         Maximise your ROI and connect with a broader, more relevant audience
                         through precise targeting powered by our first-party data.
                     </p>
-                    <a href="solutions.html" class="btn btn-primary">Explore solutions</a>
+                    <a href="../Panda Ads/solutions.html" class="btn btn-primary">Explore solutions</a>
                 </div>
                 <div class="solution-image">
-                    <img src="assets/jpeg-optimizer_audience-targeting-1024x683.png" alt="Advanced targeting">
+                    <img src="../assets/jpeg-optimizer_audience-targeting-1024x683.png" alt="Advanced targeting">
                 </div>
             </div>
         </div>
@@ -318,38 +359,38 @@
             <div class="case-studies-grid">
                 <div class="case-study-card">
                     <div class="case-study-image">
-                        <img src="assets/jpeg-optimizer_coca-cola-1-900x507.jpeg" alt="Coca-Cola case study">
+                        <img src="../assets/jpeg-optimizer_coca-cola-1-900x507.jpeg" alt="Coca-Cola case study">
                     </div>
                     <div class="case-study-content">
                         <h3 class="case-study-title">
                             Coca-Cola leveraged retail media channels to boost sales and drive growth
                         </h3>
-                        <a href="case-studies/coca-cola.html" class="btn btn-secondary">Read more</a>
+                        <a href="#" class="btn btn-secondary">Read more</a>
                     </div>
                 </div>
 
                 <div class="case-study-card">
                     <div class="case-study-image">
-                        <img src="assets/jpeg-optimizer_PandaAds_Eclipse_Thumbnail_v2-900x506.jpeg"
+                        <img src="../assets/jpeg-optimizer_PandaAds_Eclipse_Thumbnail_v2-900x506.jpeg"
                             alt="Mars Wrigley case study">
                     </div>
                     <div class="case-study-content">
                         <h3 class="case-study-title">
                             Mars Wrigley finds the perfect audience for its new product with panda ads
                         </h3>
-                        <a href="case-studies/mars-wrigley.html" class="btn btn-secondary">Read more</a>
+                        <a href="#" class="btn btn-secondary">Read more</a>
                     </div>
                 </div>
 
                 <div class="case-study-card">
                     <div class="case-study-image">
-                        <img src="assets/jpeg-optimizer_amazon.jpeg" alt="Amazon Prime case study">
+                        <img src="../assets/jpeg-optimizer_amazon.jpeg" alt="Amazon Prime case study">
                     </div>
                     <div class="case-study-content">
                         <h3 class="case-study-title">
                             Amazon Prime Video and foodpanda's impressive entertainment strategy
                         </h3>
-                        <a href="case-studies/amazon-prime.html" class="btn btn-secondary">Read more</a>
+                        <a href="#" class="btn btn-secondary">Read more</a>
                     </div>
                 </div>
             </div>
@@ -373,7 +414,7 @@
                         <p>Managing Director</p>
                     </div>
                     <div class="testimonial-company">
-                        <img src="assets/egentics-Photoroom.png" alt="Egentics">
+                        <img src="../assets/egentics-Photoroom.png" alt="Egentics">
                     </div>
                 </div>
 
@@ -388,7 +429,7 @@
                         <p>Senior Media and Digital Marketing Manager</p>
                     </div>
                     <div class="testimonial-company">
-                        <img src="assets/Universal-Robina-Logo-1024x576.png" alt="Universal Robina">
+                        <img src="../assets/Universal-Robina-Logo-1024x576.png" alt="Universal Robina">
                     </div>
                 </div>
 
@@ -403,7 +444,7 @@
                         <p>Head of Commercial</p>
                     </div>
                     <div class="testimonial-company">
-                        <img src="assets/moneymax_owler_20201020_015917_original-1024x261.png" alt="Moneymax">
+                        <img src="../assets/moneymax_owler_20201020_015917_original-1024x261.png" alt="Moneymax">
                     </div>
                 </div>
             </div>
@@ -415,7 +456,7 @@
         <div class="container">
             <div class="cta-content">
                 <h2 class="cta-title">Start advertising with panda ads today!</h2>
-                <a href="contact.html" class="btn btn-primary btn-large">Get in touch!</a>
+                <a href="../Panda Ads/contact.html" class="btn btn-primary btn-large">Get in touch!</a>
             </div>
         </div>
     </section>
@@ -426,55 +467,56 @@
             <h2 class="section-title text-center">Brands excelling with us</h2>
 
             <div class="brands-grid">
-                <div class="brand-logo"><img src="assets/1.png" alt="Brand 1"></div>
-                <div class="brand-logo"><img src="assets/2.png" alt="Brand 2"></div>
-                <div class="brand-logo"><img src="assets/3.png" alt="Brand 3"></div>
-                <div class="brand-logo"><img src="assets/4.png" alt="Brand 4"></div>
-                <div class="brand-logo"><img src="assets/5.png" alt="Brand 5"></div>
-                <div class="brand-logo"><img src="assets/6.png" alt="Brand 6"></div>
-                <div class="brand-logo"><img src="assets/7.png" alt="Brand 7"></div>
-                <div class="brand-logo"><img src="assets/8.png" alt="Brand 8"></div>
-                <div class="brand-logo"><img src="assets/9.png" alt="Brand 9"></div>
-                <div class="brand-logo"><img src="assets/10.png" alt="Brand 10"></div>
-                <div class="brand-logo"><img src="assets/11.png" alt="Brand 11"></div>
-                <div class="brand-logo"><img src="assets/12.png" alt="Brand 12"></div>
-                <div class="brand-logo"><img src="assets/13.png" alt="Brand 13"></div>
-                <div class="brand-logo"><img src="assets/14.png" alt="Brand 14"></div>
-                <div class="brand-logo"><img src="assets/15.png" alt="Brand 15"></div>
-                <div class="brand-logo"><img src="assets/16.png" alt="Brand 16"></div>
+                <div class="brand-logo"><img src="../assets/1.png" alt="Brand 1"></div>
+                <div class="brand-logo"><img src="../assets/2.png" alt="Brand 2"></div>
+                <div class="brand-logo"><img src="../assets/3.png" alt="Brand 3"></div>
+                <div class="brand-logo"><img src="../assets/4.png" alt="Brand 4"></div>
+                <div class="brand-logo"><img src="../assets/5.png" alt="Brand 5"></div>
+                <div class="brand-logo"><img src="../assets/6.png" alt="Brand 6"></div>
+                <div class="brand-logo"><img src="../assets/7.png" alt="Brand 7"></div>
+                <div class="brand-logo"><img src="../assets/8.png" alt="Brand 8"></div>
+                <div class="brand-logo"><img src="../assets/9.png" alt="Brand 9"></div>
+                <div class="brand-logo"><img src="../assets/10.png" alt="Brand 10"></div>
+                <div class="brand-logo"><img src="../assets/11.png" alt="Brand 11"></div>
+                <div class="brand-logo"><img src="../assets/12.png" alt="Brand 12"></div>
+                <div class="brand-logo"><img src="../assets/13.png" alt="Brand 13"></div>
+                <div class="brand-logo"><img src="../assets/14.png" alt="Brand 14"></div>
+                <div class="brand-logo"><img src="../assets/15.png" alt="Brand 15"></div>
+                <div class="brand-logo"><img src="../assets/16.png" alt="Brand 16"></div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-     <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-logo">
-                <img src="../Assets/foodpanda_logo_2023-removebg-preview.png" alt="Foodpanda Logo" class="footer-logo-img">
+                <img src="../Assets/foodpanda_logo_2023-removebg-preview.png" alt="Foodpanda Logo"
+                    class="footer-logo-img">
             </div>
 
             <div class="footer-content">
                 <div class="footer-section">
                     <h3 class="footer-title">Our company</h3>
                     <ul class="footer-links">
-                        <li><a href="../about.html">About foodpanda</a></li>
+                        <li><a href="../About.html">About foodpanda</a></li>
                         <li><a href="#">Privacy policy</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3 class="footer-title">panda ads</h3>
                     <ul class="footer-links">
-                        <li><a href="./solutions.html">Retail media solutions</a></li>
-                        <li><a href="https://mediakit-pandaads.foodpanda.com/">Media kit generator</a></li>
-                        <li><a href="./case-studies.html">Case studies</a></li>
-                        <li><a href="./insights.html">Industry Insights</a></li>
-                        <li><a href="./newsroom.html">Newsroom</a></li>
+                        <li><a href="../Panda Ads/solutions.html">Retail media solutions</a></li>
+                        <li><a href="../Panda Ads/media kit generator.html">Media kit generator</a></li>
+                        <li><a href="../Panda Ads/case.html">Case studies</a></li>
+                        <li><a href="../Panda Ads/insights.html">Industry Insights</a></li>
+                        <li><a href="../Panda Ads/newsroom.html">Newsroom</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3 class="footer-title">Get in touch!</h3>
                     <ul class="footer-links">
-                        <li><a href="./contact.html">Contact us</a></li>
+                        <li><a href="../Panda Ads/contact.html">Contact us</a></li>
                     </ul>
                 </div>
             </div>
@@ -489,7 +531,7 @@
     <button class="back-to-top" id="backToTop">↑</button>
 
     <!-- JavaScript Files -->
-    <!-- <script src="../Panda Ads/Panda ads js/panda ads.js"></script> -->
+    <script src="../Panda Ads/Panda ads js/panda ads.js"></script>
 </body>
 
 </html>

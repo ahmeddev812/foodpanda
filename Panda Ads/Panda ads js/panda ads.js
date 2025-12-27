@@ -357,35 +357,164 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ============================================
-    // ACCESSIBILITY IMPROVEMENTS
+             // ============================================
+    // SIMPLE SLIDER WITH SWIPE ANIMATION
     // ============================================
     
-    // Add skip to content link functionality
-    const skipLink = document.createElement('a');
-    skipLink.href = '#main-content';
-    skipLink.className = 'skip-to-content';
-    skipLink.textContent = 'Skip to main content';
-    skipLink.style.cssText = `
-        position: absolute;
-        top: -40px;
-        left: 0;
-        background: var(--primary-color);
-        color: white;
-        padding: 8px;
-        z-index: 10000;
-    `;
-    document.body.insertBefore(skipLink, document.body.firstChild);
+    const sliderContainer = document.getElementById('sliderContainer');
+    const sliderPills = document.querySelectorAll('.slider-pill');
+    const sliderSlides = document.querySelectorAll('.slider-slide');
+    const sliderPrev = document.getElementById('sliderPrev');
+    const sliderNext = document.getElementById('sliderNext');
     
-    // Add main content ID
-    const mainContent = document.querySelector('main') || document.querySelector('.hero');
-    if (mainContent && !mainContent.id) {
-        mainContent.id = 'main-content';
-        mainContent.setAttribute('tabindex', '-1');
+    if (sliderContainer && sliderSlides.length > 0) {
+        let currentSlide = 0;
+        let isAnimating = false;
+        
+        // Function to change slide with animation
+        function goToSlide(slideIndex, direction = 'next') {
+            if (isAnimating || slideIndex === currentSlide) return;
+            
+            isAnimating = true;
+            
+            // Get current and new slides
+            const current = sliderSlides[currentSlide];
+            const next = sliderSlides[slideIndex];
+            
+            // Remove active class from current slide
+            current.classList.remove('active');
+            
+            // Set animation classes based on direction
+            if (direction === 'next') {
+                current.classList.add('slide-out-left');
+                next.classList.add('slide-in-right');
+            } else {
+                current.classList.add('slide-out-right');
+                next.classList.add('slide-in-left');
+            }
+            
+            // After animation completes
+            setTimeout(() => {
+                // Remove all animation classes
+                current.classList.remove('slide-out-left', 'slide-out-right');
+                next.classList.remove('slide-in-right', 'slide-in-left');
+                
+                // Add active class to new slide
+                next.classList.add('active');
+                
+                // Update pills
+                updateActivePill(slideIndex);
+                
+                isAnimating = false;
+            }, 500);
+            
+            currentSlide = slideIndex;
+        }
+        
+        // Update active pill
+        function updateActivePill(index) {
+            sliderPills.forEach(pill => pill.classList.remove('active'));
+            sliderPills[index].classList.add('active');
+        }
+        
+        // Next slide function
+        function nextSlide() {
+            const nextIndex = (currentSlide + 1) % sliderSlides.length;
+            goToSlide(nextIndex, 'next');
+        }
+        
+        // Previous slide function
+        function prevSlide() {
+            const prevIndex = (currentSlide - 1 + sliderSlides.length) % sliderSlides.length;
+            goToSlide(prevIndex, 'prev');
+        }
+        
+        // Add click events to pills
+        sliderPills.forEach((pill, index) => {
+            pill.addEventListener('click', () => {
+                const direction = index > currentSlide ? 'next' : 'prev';
+                goToSlide(index, direction);
+            });
+        });
+        
+        // Navigation arrows
+        if (sliderNext) {
+            sliderNext.addEventListener('click', nextSlide);
+        }
+        
+        if (sliderPrev) {
+            sliderPrev.addEventListener('click', prevSlide);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+        
+        // Touch/swipe functionality
+        let startX = 0;
+        let endX = 0;
+        const swipeThreshold = 50;
+        
+        sliderContainer.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        }, { passive: true });
+        
+        sliderContainer.addEventListener('touchmove', (e) => {
+            endX = e.touches[0].clientX;
+        }, { passive: true });
+        
+        sliderContainer.addEventListener('touchend', () => {
+            const diffX = startX - endX;
+            
+            if (Math.abs(diffX) > swipeThreshold) {
+                if (diffX > 0) {
+                    // Swipe left
+                    nextSlide();
+                } else {
+                    // Swipe right
+                    prevSlide();
+                }
+            }
+        });
+        
+        // Mouse drag/swipe functionality for desktop
+        let mouseDown = false;
+        let mouseStartX = 0;
+        let mouseEndX = 0;
+        
+        sliderContainer.addEventListener('mousedown', (e) => {
+            mouseDown = true;
+            mouseStartX = e.clientX;
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            if (!mouseDown) return;
+            mouseEndX = e.clientX;
+        });
+        
+        document.addEventListener('mouseup', () => {
+            if (!mouseDown) return;
+            
+            const diffX = mouseStartX - mouseEndX;
+            
+            if (Math.abs(diffX) > swipeThreshold) {
+                if (diffX > 0) {
+                    // Swipe left
+                    nextSlide();
+                } else {
+                    // Swipe right
+                    prevSlide();
+                }
+            }
+            
+            mouseDown = false;
+        });
     }
-    
-    console.log('Panda Ads website loaded successfully!');
 });
+    
+   
 
 // ============================================
 // HELPER FUNCTIONS
@@ -453,9 +582,418 @@ if (!document.querySelector('#toast-animations')) {
         }
     `;
     document.head.appendChild(style);
+}// Newsroom JavaScript - Modular and Clean
+(function() {
+    'use strict';
+
+    // ============================================
+    // CONFIGURATION
+    // ============================================
+    const CONFIG = {
+        animationSpeed: 300,
+        swipeThreshold: 50,
+        debounceDelay: 200
+    };
+
+    // ============================================
+    // DOM ELEMENT REFERENCES
+    // ============================================
+    const DOM = {
+        filterTabs: null,
+        newsCards: null,
+        searchInput: null,
+        backToTopBtn: null,
+        featuredImage: null,
+        newsImages: null
+    };
+
+    // ============================================
+    // STATE MANAGEMENT
+    // ============================================
+    const STATE = {
+        currentFilter: 'all',
+        isLoading: false,
+        searchTerm: ''
+    };
+
+    // ============================================
+    // INITIALIZATION
+    // ============================================
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Newsroom page loaded');
+        
+        // Cache DOM elements
+        cacheDomElements();
+        
+        // Initialize features
+        initializeNewsFilter();
+        initializeSearch();
+        initializeBackToTop();
+        initializeImageLoading();
+        initializeActiveNav();
+        
+        // Set up event listeners
+        setupEventListeners();
+    });
+
+    // ============================================
+    // DOM ELEMENT CACHING
+    // ============================================
+    function cacheDomElements() {
+        DOM.filterTabs = document.querySelectorAll('.filter-tab');
+        DOM.newsCards = document.querySelectorAll('.news-card');
+        DOM.searchInput = document.getElementById('searchInput');
+        DOM.backToTopBtn = document.getElementById('backToTop');
+        DOM.featuredImage = document.querySelector('.featured-image img');
+        DOM.newsImages = document.querySelectorAll('.news-image img');
+    }
+
+    // ============================================
+    // NEWS FILTER FUNCTIONALITY
+    // ============================================
+    function initializeNewsFilter() {
+        if (!DOM.filterTabs || !DOM.newsCards) return;
+
+        DOM.filterTabs.forEach(tab => {
+            tab.addEventListener('click', handleFilterClick);
+        });
+    }
+
+    function handleFilterClick(e) {
+        const tab = e.currentTarget;
+        const category = tab.dataset.category;
+        
+        if (STATE.currentFilter === category) return;
+        
+        // Update active tab
+        DOM.filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        // Update state
+        STATE.currentFilter = category;
+        
+        // Filter news cards
+        filterNewsCards(category);
+    }
+
+    function filterNewsCards(category) {
+        DOM.newsCards.forEach(card => {
+            const cardCategory = card.dataset.category;
+            const shouldShow = category === 'all' || cardCategory === category;
+            
+            if (shouldShow) {
+                showCardWithAnimation(card);
+            } else {
+                hideCardWithAnimation(card);
+            }
+        });
+    }
+
+    function showCardWithAnimation(card) {
+        card.style.display = 'flex';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        
+        requestAnimationFrame(() => {
+            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        });
+    }
+
+    function hideCardWithAnimation(card) {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            card.style.display = 'none';
+        }, CONFIG.animationSpeed);
+    }
+
+    // ============================================
+    // SEARCH FUNCTIONALITY
+    // ============================================
+    function initializeSearch() {
+        if (!DOM.searchInput) return;
+
+        const debouncedSearch = debounce(handleSearch, CONFIG.debounceDelay);
+        DOM.searchInput.addEventListener('input', debouncedSearch);
+    }
+
+    function handleSearch(e) {
+        STATE.searchTerm = e.target.value.toLowerCase().trim();
+        
+        DOM.newsCards.forEach(card => {
+            const title = card.querySelector('.news-title').textContent.toLowerCase();
+            const category = card.querySelector('.news-category').textContent.toLowerCase();
+            const cardCategory = card.dataset.category;
+            
+            const matchesSearch = title.includes(STATE.searchTerm) || 
+                                 category.includes(STATE.searchTerm);
+            const matchesFilter = STATE.currentFilter === 'all' || 
+                                 cardCategory === STATE.currentFilter;
+            
+            if (matchesSearch && matchesFilter) {
+                showCardWithAnimation(card);
+            } else {
+                hideCardWithAnimation(card);
+            }
+        });
+    }
+
+    // ============================================
+    // BACK TO TOP FUNCTIONALITY
+    // ============================================
+    function initializeBackToTop() {
+        if (!DOM.backToTopBtn) return;
+
+        window.addEventListener('scroll', toggleBackToTopButton);
+        
+        DOM.backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    function toggleBackToTopButton() {
+        if (!DOM.backToTopBtn) return;
+        
+        if (window.pageYOffset > 300) {
+            DOM.backToTopBtn.classList.add('visible');
+        } else {
+            DOM.backToTopBtn.classList.remove('visible');
+        }
+    }
+
+    // ============================================
+    // IMAGE LOADING AND ANIMATIONS
+    // ============================================
+    function initializeImageLoading() {
+        const images = [...(DOM.newsImages || []), ...(DOM.featuredImage ? [DOM.featuredImage] : [])];
+        
+        images.forEach(img => {
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.5s ease';
+            
+            if (img.complete) {
+                img.style.opacity = '1';
+            } else {
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                });
+                
+                img.addEventListener('error', function() {
+                    console.warn('Failed to load image:', this.src);
+                    this.style.opacity = '1';
+                    this.style.filter = 'grayscale(100%)';
+                });
+            }
+        });
+    }
+
+    // ============================================
+    // ACTIVE NAVIGATION HIGHLIGHTING
+    // ============================================
+    function initializeActiveNav() {
+        const currentPage = window.location.pathname.split('/').pop() || 'pandaads.html';
+        const navItems = document.querySelectorAll('.nav-item a, .mobile-nav-item a');
+        
+        navItems.forEach(item => {
+            const href = item.getAttribute('href');
+            
+            // Check if this link points to the current page
+            if (href && (href.includes(currentPage) || 
+                (currentPage === '' && href.includes('pandaads.html')))) {
+                
+                // Remove active class from all items
+                navItems.forEach(i => i.parentElement.classList.remove('active'));
+                
+                // Add active class to current item
+                item.parentElement.classList.add('active');
+                
+                // If it's in a dropdown, highlight the parent too
+                const dropdown = item.closest('.dropdown');
+                if (dropdown) {
+                    dropdown.classList.add('active');
+                }
+            }
+        });
+    }
+
+    // ============================================
+    // EVENT LISTENER SETUP
+    // ============================================
+    function setupEventListeners() {
+        // Keyboard navigation for filter tabs
+        document.addEventListener('keydown', function(e) {
+            if (e.target.classList.contains('filter-tab')) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.target.click();
+                }
+            }
+            
+            // Arrow key navigation for filter tabs
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                navigateFilterTabs(e.key);
+            }
+        });
+        
+        // Resize observer for responsive adjustments
+        const resizeObserver = new ResizeObserver(debounce(handleResize, 250));
+        resizeObserver.observe(document.body);
+    }
+
+    function navigateFilterTabs(direction) {
+        if (!DOM.filterTabs.length) return;
+        
+        const currentIndex = Array.from(DOM.filterTabs).findIndex(tab => tab.classList.contains('active'));
+        let newIndex;
+        
+        if (direction === 'ArrowRight') {
+            newIndex = (currentIndex + 1) % DOM.filterTabs.length;
+        } else if (direction === 'ArrowLeft') {
+            newIndex = (currentIndex - 1 + DOM.filterTabs.length) % DOM.filterTabs.length;
+        }
+        
+        if (newIndex !== undefined) {
+            DOM.filterTabs[newIndex].click();
+            DOM.filterTabs[newIndex].focus();
+        }
+    }
+
+    function handleResize() {
+        // Adjust card layout if needed
+        DOM.newsCards.forEach(card => {
+            if (window.innerWidth < 768) {
+                card.style.minHeight = 'auto';
+            } else {
+                card.style.minHeight = '';
+            }
+        });
+    }
+
+    // ============================================
+    // UTILITY FUNCTIONS
+    // ============================================
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func.apply(this, args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+
+    // ============================================
+    // EXPORT PUBLIC FUNCTIONS (if needed)
+    // ============================================
+    window.Newsroom = {
+        filterByCategory: function(category) {
+            if (DOM.filterTabs) {
+                const tab = Array.from(DOM.filterTabs).find(t => t.dataset.category === category);
+                if (tab) tab.click();
+            }
+        },
+        
+        search: function(term) {
+            if (DOM.searchInput) {
+                DOM.searchInput.value = term;
+                DOM.searchInput.dispatchEvent(new Event('input'));
+            }
+        },
+        
+        refresh: function() {
+            cacheDomElements();
+            initializeNewsFilter();
+        }
+    };
+
+    // ============================================
+    // ERROR HANDLING
+    // ============================================
+    window.addEventListener('error', function(e) {
+        console.error('Newsroom script error:', e.error);
+    });
+
+    // Log initialization
+    console.log('Newsroom module initialized');
+})();
+
+// Optional: Intersection Observer for lazy loading
+if ('IntersectionObserver' in window) {
+    const lazyImageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                }
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    // Observe lazy images
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        lazyImageObserver.observe(img);
+    });
 }
 
-// Polyfill for older browsers
-if (!('IntersectionObserver' in window)) {
-    console.warn('IntersectionObserver not supported in this browser');
+// Optional: Add performance monitoring
+if (window.performance) {
+    window.addEventListener('load', function() {
+        const timing = window.performance.timing;
+        const loadTime = timing.loadEventEnd - timing.navigationStart;
+        console.log(`Page loaded in ${loadTime}ms`);
+    });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contactForm');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Client-side validation
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        // Get submit button
+        const button = form.querySelector('button[type="submit"]');
+        const originalText = button.textContent;
+
+        // Show loading state
+        button.textContent = 'Submitting...';
+        button.disabled = true;
+
+        // Simulate form submission (replace with real fetch/AJAX for production)
+        setTimeout(() => {
+            alert('Thank you! Your message has been sent successfully.');
+            form.reset();
+            button.textContent = originalText;
+            button.disabled = false;
+        }, 1500);
+    });
+});
