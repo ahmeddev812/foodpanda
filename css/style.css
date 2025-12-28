@@ -1599,6 +1599,223 @@ a.dropdown-toggle:hover {
 }
 
 /* ============================================
+   ABOUT FOODPANDA SECTION (Custom Version)
+   ============================================ */
+
+/* Hero Section for About Foodpanda */
+.about-foodpanda-hero {
+    position: relative;
+    height: 70vh;
+    min-height: 700px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.about-foodpanda-hero .about-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Changed from 70% to 100% to fill completely */
+    z-index: 1;
+}
+
+.about-foodpanda-hero .about-background-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.about-foodpanda-hero .about-hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    padding-bottom: 0 !important;
+}
+
+.about-foodpanda-hero .about-hero-text {
+    max-width: 750px;
+    text-align: left;
+    padding-left: 0;
+    animation: aboutFadeInUp 0.8s ease forwards;
+    margin: 0;
+    padding: 0;
+}
+
+/* About Panda Hero Text */
+.about-foodpanda-hero .about-hero-title {
+    font-size: 80px;
+    font-family: 'Heading', sans-serif;
+    font-weight: 800;
+    line-height: 1;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+.about-foodpanda-hero .about-hero-title strong {
+    color: #FF2B85;
+    position: relative;
+    display: inline-block;
+}
+
+.about-foodpanda-hero .about-hero-title strong::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #FF2B85, #D81B60);
+    border-radius: 2px;
+}
+
+.about-foodpanda-hero .about-hero-subtitle {
+    font-size: 20px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 600px;
+    margin-bottom: 40px;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+}
+
+/* About video overlay for better text readability */
+.about-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(7, 0, 0, 0.4);
+    z-index: 2;
+    /* Very strong white side shadows */
+    box-shadow: inset 120px 0 180px -80px rgba(255, 255, 255, 0.45),
+                inset -120px 0 180px -80px rgba(255, 255, 255, 3.55);
+}
+
+/* Container for about section */
+.about-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Custom animation for about section */
+@keyframes aboutFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.about-fade-in-up {
+    animation: aboutFadeInUp 0.8s ease forwards;
+}
+
+/* ============================================
+   COMPANY SECTION - NO SPACING AT ALL
+   ============================================ */
+
+/* Remove ALL spacing - appears directly after hero */
+.company-tight {
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    margin-top: 0 !important;
+    border-top: none;
+}
+
+/* Use existing container for consistency */
+.company-tight .container {
+    margin-top: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0;
+}
+
+/* Content flows directly without any gaps */
+.company-tight-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin: 0;
+    padding: 60px 0; /* Add vertical padding here instead of on section */
+    align-items: start;
+}
+
+/* Main content - no extra spacing */
+.company-tight-content {
+    margin: 0;
+    padding: 0;
+}
+
+.company-tight-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000000;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+.company-tight-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Reduced gap between paragraphs */
+    margin: 0;
+    padding: 0;
+}
+
+.company-tight-paragraph {
+    font-family: sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    max-width: 90%;
+}
+
+/* Aside - minimal styling */
+.company-tight-aside {
+    min-height: 200px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Force sections to touch each other */
+.about-foodpanda-hero + .company-tight {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 
@@ -1618,11 +1835,18 @@ a.dropdown-toggle:hover {
     .feature-title {
         font-size: 32px;
     }
+
+    .about-foodpanda-hero .about-hero-title {
+        font-size: 56px;
+    }
+
+    .company-tight-grid {
+        padding: 50px 0;
+    }
 }
 
 /* Tablet (768px to 991px) */
 @media (max-width: 991px) {
-
     /* Header Adjustments */
     .main-nav {
         display: none;
@@ -1674,11 +1898,97 @@ a.dropdown-toggle:hover {
     .footer-section {
         min-width: 150px;
     }
+
+    /* About Section */
+    .about-foodpanda-hero {
+        height: 60vh;
+        min-height: 500px;
+    }
+    
+    .about-foodpanda-hero .about-hero-title {
+        font-size: 48px;
+    }
+    
+    .about-foodpanda-hero .about-hero-subtitle {
+        font-size: 18px;
+    }
+
+    /* Company Tight Section */
+    .company-tight-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 40px 0;
+    }
+    
+    .company-tight-title {
+        font-size: 36px;
+        margin-bottom: 16px;
+    }
+    
+    .company-tight-paragraph {
+        max-width: 100%;
+        font-size: 17px;
+    }
+
+    /* Stats Section */
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    .stat-number {
+        font-size: 56px;
+    }
+
+    /* Benefits Grid */
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    /* Solutions */
+    .solution-item,
+    .solution-reverse {
+        flex-direction: column;
+        gap: var(--spacing-xl);
+    }
+
+    .solution-title {
+        font-size: 28px;
+    }
+
+    /* Case Studies */
+    .case-studies-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    /* CTA Section */
+    .cta-content {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-xl);
+        padding: var(--spacing-xl);
+    }
+
+    .cta-title {
+        font-size: 32px;
+    }
+
+    /* Brands */
+    .brands-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
 }
 
 /* Mobile (576px to 767px) */
 @media (max-width: 767px) {
-
     /* Typography */
     h1 {
         font-size: 40px;
@@ -1765,6 +2075,96 @@ a.dropdown-toggle:hover {
         height: 40px;
         font-size: 18px;
     }
+
+    /* About Section */
+    .about-foodpanda-hero {
+        height: 50vh;
+        min-height: 400px;
+    }
+    
+    .about-foodpanda-hero .about-hero-title {
+        font-size: 36px;
+    }
+    
+    .about-foodpanda-hero .about-hero-subtitle {
+        font-size: 16px;
+    }
+
+    /* Company Tight Section */
+    .company-tight-grid {
+        padding: 30px 0;
+    }
+
+    .company-tight-title {
+        font-size: 32px;
+        margin-bottom: 14px;
+        line-height: 1.3;
+    }
+    
+    .company-tight-paragraph {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    .company-tight-aside {
+        min-height: 150px;
+        padding: 15px;
+    }
+
+    /* Panda Ads Hero */
+    .hero-panda-ads .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-panda-ads .hero-subtitle {
+        font-size: 16px;
+    }
+
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .stat-number {
+        font-size: 48px;
+    }
+
+    /* Benefits */
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    /* Solutions */
+    .solution-item {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .solution-title {
+        font-size: 24px;
+    }
+
+    /* Case Studies */
+    .case-studies-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .case-study-title {
+        min-height: auto;
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    /* Brands */
+    .brands-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 /* Small Mobile (up to 575px) */
@@ -1816,6 +2216,102 @@ a.dropdown-toggle:hover {
     .search-submit {
         padding: 0 var(--spacing-md);
     }
+
+    /* About Section */
+    .about-container {
+        padding: 0 16px;
+    }
+    
+    .about-foodpanda-hero {
+        height: 40vh;
+        min-height: 300px;
+    }
+    
+    .about-foodpanda-hero .about-hero-title {
+        font-size: 32px;
+    }
+    
+    .about-foodpanda-hero .about-hero-subtitle {
+        font-size: 15px;
+        margin-bottom: 24px;
+    }
+
+    /* Company Tight Section */
+    .company-tight-grid {
+        padding: 20px 0;
+        gap: 20px;
+    }
+    
+    .company-tight-title {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+    
+    .company-tight-paragraph {
+        font-size: 15px;
+    }
+
+    /* Panda Ads Hero */
+    .hero-panda-ads .hero-title {
+        font-size: 32px;
+    }
+
+    .hero-panda-ads .hero-subtitle {
+        font-size: 15px;
+        margin-bottom: 24px;
+    }
+
+    .hero-panda-ads .btn-hero {
+        padding: 12px 28px;
+    }
+
+    /* Stats */
+    .stats-section {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .stat-number {
+        font-size: 40px;
+    }
+
+    .stat-label {
+        font-size: 16px;
+    }
+
+    /* Benefits & Solutions */
+    .benefits-section,
+    .solutions-section,
+    .case-studies,
+    .testimonials,
+    .cta-section,
+    .brands-section {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .benefit-card,
+    .testimonial-card {
+        padding: var(--spacing-lg);
+    }
+
+    /* CTA */
+    .cta-title {
+        font-size: 28px;
+    }
+
+    .cta-content .btn-large {
+        padding: 14px 32px;
+        font-size: 16px;
+    }
+
+    /* Brands */
+    .brands-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .brand-logo {
+        padding: 12px;
+    }
 }
 
 /* Extra Small Devices */
@@ -1834,6 +2330,31 @@ a.dropdown-toggle:hover {
 
     .app-downloads {
         flex-direction: column;
+    }
+
+    /* About Section */
+    .about-foodpanda-hero .about-hero-title {
+        font-size: 28px;
+    }
+
+    /* Company Tight Section */
+    .company-tight-title {
+        font-size: 26px;
+    }
+
+    /* Panda Ads Hero */
+    .hero-panda-ads .hero-title {
+        font-size: 28px;
+    }
+
+    /* CTA */
+    .cta-title {
+        font-size: 24px;
+    }
+
+    /* Brands */
+    .brands-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -1970,7 +2491,6 @@ a.dropdown-toggle:hover {
     }
 }
 
-
 /* Fix for mobile menu on very small screens */
 @media (max-width: 375px) {
     .mobile-nav-list {
@@ -2063,7 +2583,6 @@ a.dropdown-toggle:hover {
 
 /* Print styles */
 @media print {
-
     .header,
     .mobile-nav,
     .search-overlay,
@@ -2084,209 +2603,6 @@ a.dropdown-toggle:hover {
 
     img {
         max-width: 100% !important;
-    }
-}
-
-@media (max-width: 991px) {
-
-    /* Stats Section */
-    .stats-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--spacing-lg);
-    }
-
-    .stat-number {
-        font-size: 56px;
-    }
-
-    /* Benefits Grid */
-    .benefits-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-lg);
-    }
-
-    /* Solutions */
-    .solution-item,
-    .solution-reverse {
-        flex-direction: column;
-        gap: var(--spacing-xl);
-    }
-
-    .solution-title {
-        font-size: 28px;
-    }
-
-    /* Case Studies */
-    .case-studies-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-lg);
-    }
-
-    /* Testimonials */
-    .testimonials-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-lg);
-    }
-
-    /* CTA Section */
-    .cta-content {
-        flex-direction: column;
-        text-align: center;
-        gap: var(--spacing-xl);
-        padding: var(--spacing-xl);
-    }
-
-    .cta-title {
-        font-size: 32px;
-    }
-
-    /* Brands */
-    .brands-grid {
-        grid-template-columns: repeat(6, 1fr);
-    }
-}
-
-/* Mobile Styles (576px to 767px) */
-@media (max-width: 767px) {
-
-    /* Hero */
-    .hero-panda-ads .hero-title {
-        font-size: 36px;
-    }
-
-    .hero-panda-ads .hero-subtitle {
-        font-size: 16px;
-    }
-
-    /* Stats */
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-    }
-
-    .stat-number {
-        font-size: 48px;
-    }
-
-    /* Benefits */
-    .benefits-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-    }
-
-    /* Solutions */
-    .solution-item {
-        margin-bottom: var(--spacing-xl);
-    }
-
-    .solution-title {
-        font-size: 24px;
-    }
-
-    /* Case Studies */
-    .case-studies-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-    }
-
-    .case-study-title {
-        min-height: auto;
-    }
-
-    /* Testimonials */
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-    }
-
-    /* Brands */
-    .brands-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-/* Small Mobile (up to 575px) */
-@media (max-width: 575px) {
-
-    /* Hero */
-    .hero-panda-ads .hero-title {
-        font-size: 32px;
-    }
-
-    .hero-panda-ads .hero-subtitle {
-        font-size: 15px;
-        margin-bottom: 24px;
-    }
-
-    .hero-panda-ads .btn-hero {
-        padding: 12px 28px;
-    }
-
-    /* Stats */
-    .stats-section {
-        padding: var(--spacing-xl) 0;
-    }
-
-    .stat-number {
-        font-size: 40px;
-    }
-
-    .stat-label {
-        font-size: 16px;
-    }
-
-    /* Benefits & Solutions */
-    .benefits-section,
-    .solutions-section,
-    .case-studies,
-    .testimonials,
-    .cta-section,
-    .brands-section {
-        padding: var(--spacing-xl) 0;
-    }
-
-    .benefit-card,
-    .testimonial-card {
-        padding: var(--spacing-lg);
-    }
-
-    /* CTA */
-    .cta-title {
-        font-size: 28px;
-    }
-
-    .cta-content .btn-large {
-        padding: 14px 32px;
-        font-size: 16px;
-    }
-
-    /* Brands */
-    .brands-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--spacing-md);
-    }
-
-    .brand-logo {
-        padding: 12px;
-    }
-}
-
-/* Extra Small Devices */
-@media (max-width: 375px) {
-
-    /* Hero */
-    .hero-panda-ads .hero-title {
-        font-size: 28px;
-    }
-
-    /* CTA */
-    .cta-title {
-        font-size: 24px;
-    }
-
-    /* Brands */
-    .brands-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -2318,4 +2634,121 @@ a.dropdown-toggle:hover {
 .btn-secondary:hover {
     background-color: var(--primary-color);
     color: var(--text-white);
+}/* ================= SLIDER ================= */
+.slider-section {
+    padding: 60px 0;
+    background-color: #F5F5F5;
+}
+
+.slider-wrapper {
+    max-width: 1500px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Slides */
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+}
+
+/* Animation directions */
+.slide.from-right {
+    transform: translateX(100%);
+}
+
+.slide.from-left {
+    transform: translateX(-100%);
+}
+
+/* Slide Layout */
+.slide-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.slide-text {
+    width: 50%;
+}
+
+.slide-text h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.slide-text p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.slide-image {
+    width: 50%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+}
+
+/* Controls */
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.slider-prev,
+.slider-next {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #ff2b85;
+}
+
+/* Pagination */
+.slider-pagination {
+    display: flex;
+    gap: 10px;
+}
+
+.pagination-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    border: none;
+    cursor: pointer;
+}
+
+.pagination-dot.active {
+    background: #ff2b85;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .slide-content {
+        flex-direction: column;
+    }
+
+    .slide-text,
+    .slide-image {
+        width: 100%;
+    }
+
+    .slide-image {
+        height: 220px;
+    }
 }
