@@ -45,22 +45,45 @@ function initializeApp() {
 // Setup Event Listeners
 function setupEventListeners() {
     // Cookie banner
-    acceptCookiesBtn.addEventListener('click', acceptCookies);
+    if (acceptCookiesBtn) {
+        acceptCookiesBtn.addEventListener('click', acceptCookies);
+    }
     
-    // Mobile navigation
-    mobileMenuBtn.addEventListener('click', toggleMobileNav);
-    closeMobileNavBtn.addEventListener('click', toggleMobileNav);
+    // Mobile navigation - FIXED
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', toggleMobileNav);
+    }
+    
+    if (closeMobileNavBtn) {
+        closeMobileNavBtn.addEventListener('click', toggleMobileNav);
+    }
+    
+    // Close mobile nav when clicking outside
+    if (mobileNav) {
+        mobileNav.addEventListener('click', (e) => {
+            if (e.target === mobileNav) {
+                toggleMobileNav();
+            }
+        });
+    }
     
     // Shortlist functionality
-    shortlistToggleBtn.addEventListener('click', toggleShortlistModal);
-    closeShortlistBtn.addEventListener('click', toggleShortlistModal);
+    if (shortlistToggleBtn) {
+        shortlistToggleBtn.addEventListener('click', toggleShortlistModal);
+    }
+    
+    if (closeShortlistBtn) {
+        closeShortlistBtn.addEventListener('click', toggleShortlistModal);
+    }
     
     // Close modal when clicking outside
-    shortlistModal.addEventListener('click', (e) => {
-        if (e.target === shortlistModal) {
-            toggleShortlistModal();
-        }
-    });
+    if (shortlistModal) {
+        shortlistModal.addEventListener('click', (e) => {
+            if (e.target === shortlistModal) {
+                toggleShortlistModal();
+            }
+        });
+    }
     
     // Mobile nav dropdowns
     mobileNavItems.forEach(item => {
@@ -101,6 +124,57 @@ function setupEventListeners() {
             }
         });
     });
+    
+    // Hero search functionality
+    const heroSearchInput = document.getElementById('hero-search-input');
+    const searchIcon = document.querySelector('.search-icon');
+    
+    if (heroSearchInput && searchIcon) {
+        // Change icon color on focus
+        heroSearchInput.addEventListener('focus', function() {
+            searchIcon.style.color = 'var(--primary-dark-pink)';
+        });
+        
+        heroSearchInput.addEventListener('blur', function() {
+            searchIcon.style.color = 'var(--primary-pink)';
+        });
+        
+        // Handle search on Enter key
+        heroSearchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performHeroSearch(this.value);
+            }
+        });
+        
+        // Handle search on icon click (optional)
+        searchIcon.addEventListener('click', function() {
+            performHeroSearch(heroSearchInput.value);
+        });
+    }
+    
+    // Close mobile nav on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+            toggleMobileNav();
+        }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
+            toggleMobileNav();
+        }
+    });
+    
+    // Close mobile nav when clicking a link (except dropdown toggles)
+    document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (!e.target.querySelector('i') && !e.currentTarget.querySelector('i')) {
+                toggleMobileNav();
+            }
+        });
+    });
 }
 
 // Cookie Functions
@@ -109,24 +183,32 @@ function acceptCookies() {
     localStorage.setItem('cookieAccepted', 'true');
     cookieBanner.style.display = 'none';
     
-    // You can add analytics initialization here
     console.log('Cookies accepted. Analytics can be initialized.');
 }
 
-// Mobile Navigation
+// Mobile Navigation - FIXED VERSION
 function toggleMobileNav() {
+    const isActive = mobileNav.classList.contains('active');
+    
+    // Toggle mobile nav
     mobileNav.classList.toggle('active');
     
     // Toggle hamburger animation
     const spans = mobileMenuBtn.querySelectorAll('span');
-    if (mobileNav.classList.contains('active')) {
+    if (!isActive) {
+        // Menu opening
         spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
         spans[1].style.opacity = '0';
         spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+        document.body.style.overflow = 'hidden';
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
     } else {
+        // Menu closing
         spans[0].style.transform = 'none';
         spans[1].style.opacity = '1';
         spans[2].style.transform = 'none';
+        document.body.style.overflow = '';
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
     }
 }
 
@@ -161,10 +243,14 @@ function toggleJobShortlist(jobId, button) {
 }
 
 function updateShortlistCount() {
-    shortlistCount.textContent = shortlistedJobs.length;
+    if (shortlistCount) {
+        shortlistCount.textContent = shortlistedJobs.length;
+    }
 }
 
 function updateShortlistModal() {
+    if (!shortlistItemsContainer) return;
+    
     if (shortlistedJobs.length === 0) {
         shortlistItemsContainer.innerHTML = '<p class="empty-shortlist">Your shortlist is empty</p>';
         return;
@@ -226,7 +312,6 @@ function performSearch(e) {
     if (searchInput) {
         const searchTerm = searchInput.value.trim();
         if (searchTerm) {
-            // In a real app, this would make an API call
             console.log('Searching for:', searchTerm);
             showNotification(`Searching for "${searchTerm}"...`);
             
@@ -238,22 +323,40 @@ function performSearch(e) {
     }
 }
 
+// Hero Search Functionality
+function performHeroSearch(query) {
+    if (query && query.trim()) {
+        console.log('Hero search for:', query.trim());
+        showNotification(`Searching for "${query.trim()}"...`);
+        
+        // Example redirect (uncomment when needed):
+        // window.location.href = `/jobs?search=${encodeURIComponent(query.trim())}`;
+    } else {
+        // If search is empty, redirect to jobs page
+        // window.location.href = '/jobs';
+    }
+}
+
 // Animations
 function animateStats() {
     statNumbers.forEach(stat => {
-        const target = parseInt(stat.dataset.count);
-        const suffix = stat.textContent.includes('+') ? '+' : '';
-        animateNumber(stat, 0, target, 1500);
+        const text = stat.textContent;
+        const target = parseInt(text.replace('+', ''));
+        if (!isNaN(target)) {
+            animateNumber(stat, 0, target, 1500);
+        }
     });
 }
 
 function animateNumber(element, start, end, duration) {
     let startTimestamp = null;
+    const suffix = element.textContent.includes('+') ? '+' : '';
+    
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
         const currentValue = Math.floor(progress * (end - start) + start);
-        element.textContent = currentValue + (element.textContent.includes('+') ? '+' : '');
+        element.textContent = currentValue + suffix;
         
         if (progress < 1) {
             window.requestAnimationFrame(step);
@@ -265,6 +368,10 @@ function animateNumber(element, start, end, duration) {
 
 // Utility Functions
 function showNotification(message, type = 'success') {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => notification.remove());
+    
     // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
@@ -286,12 +393,36 @@ function showNotification(message, type = 'success') {
         border-radius: 8px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 12px;
-        z-index: 1000;
+        z-index: 10000;
         animation: slideIn 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        min-width: 250px;
+        max-width: 350px;
     `;
     
-    // Add animation keyframes
+    // Add close button styles
+    notification.querySelector('button').style.cssText = `
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 0;
+        font-size: 14px;
+        opacity: 0.8;
+        transition: opacity 0.2s;
+    `;
+    
+    notification.querySelector('button').addEventListener('mouseenter', function() {
+        this.style.opacity = '1';
+    });
+    
+    notification.querySelector('button').addEventListener('mouseleave', function() {
+        this.style.opacity = '0.8';
+    });
+    
+    // Add animation keyframes if not already added
     if (!document.getElementById('notification-styles')) {
         const style = document.createElement('style');
         style.id = 'notification-styles';
@@ -299,6 +430,10 @@ function showNotification(message, type = 'success') {
             @keyframes slideIn {
                 from { transform: translateX(100%); opacity: 0; }
                 to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
             }
         `;
         document.head.appendChild(style);
@@ -309,82 +444,16 @@ function showNotification(message, type = 'success') {
     // Auto remove after 3 seconds
     setTimeout(() => {
         if (notification.parentElement) {
-            notification.remove();
+            notification.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 300);
         }
     }, 3000);
 }
 
-// Add notification styles to head
-const notificationStyles = document.createElement('style');
-notificationStyles.textContent = `
-    .notification {
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    
-    .notification button {
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        padding: 0;
-        font-size: 14px;
-    }
-`;
-document.head.appendChild(notificationStyles);
-
-// Close mobile nav when clicking a link
-document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
-    link.addEventListener('click', (e) => {
-        if (!e.target.querySelector('i')) { // Don't close for dropdown toggles
-            toggleMobileNav();
-        }
-    });
-});
-
-// Close mobile nav on escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-        toggleMobileNav();
-    }
-});
-
-// Handle window resize
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
-        toggleMobileNav();
-    }
-});// Hero search functionality
-const heroSearchInput = document.getElementById('hero-search-input');
-const searchIcon = document.querySelector('.search-icon');
-
-// Change icon color on focus
-heroSearchInput.addEventListener('focus', function() {
-    searchIcon.style.color = 'var(--primary-dark-pink)';
-});
-
-heroSearchInput.addEventListener('blur', function() {
-    searchIcon.style.color = 'var(--primary-pink)';
-});
-
-// Handle search on Enter key
-heroSearchInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        performSearch(this.value);
-    }
-});
-
-// Handle search on icon click (optional)
-searchIcon.addEventListener('click', function() {
-    performSearch(heroSearchInput.value);
-});
-
-function performSearch(query) {
-    if (query.trim()) {
-        // Redirect to jobs page with search query
-        window.location.href = `/jobs?search=${encodeURIComponent(query.trim())}`;
-    } else {
-        // Redirect to jobs page without query
-        window.location.href = '/jobs';
-    }
-}
+// Expose functions to global scope if needed
+window.toggleMobileNav = toggleMobileNav;
+window.toggleShortlistModal = toggleShortlistModal;
