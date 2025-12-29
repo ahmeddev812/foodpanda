@@ -1548,3 +1548,42 @@ if (window.NodeList && !NodeList.prototype.forEach) {
     showSlide(0);
     startAutoPlay();
 });
+// In your existing script.js file, add these functions if not present:
+
+// Show Toast Function (if not already there)
+function showToast(message, type = 'info', duration = 5000) {
+    // Check if toast element exists
+    let toast = document.getElementById('toast');
+    
+    // Create toast if it doesn't exist
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        document.body.appendChild(toast);
+    }
+    
+    // Set toast content and class
+    toast.innerHTML = message;
+    toast.className = 'toast ' + type;
+    
+    // Show toast
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+    
+    // Auto hide
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, duration);
+}
+
+// Form Validation Helper
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+function validatePhone(phone) {
+    const re = /^[\+]?[1-9][\d]{0,15}$/;
+    return re.test(phone.replace(/[\s\-\(\)]/g, ''));
+}
